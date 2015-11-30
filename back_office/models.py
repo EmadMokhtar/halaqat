@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from Django.contrib.auth.models import User
 
 FEMALE = 'F'
 MALE = 'M'
@@ -20,3 +21,4 @@ class Teacher(models.Model):
     phone_number = models.CharField(max_length=15,
                                     verbose_name=_('Phone Number'))
     job_title = models.CharField(max_length=15, verbose_name=_('Title'))
+    user = models.OneToOneField(to=User, related_name='teachers')
