@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'back_office'
+    'crispy_forms',
+    'back_office',
 )
 
 MIDDLEWARE_CLASSES = (
