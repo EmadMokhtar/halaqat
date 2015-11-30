@@ -21,4 +21,21 @@ class Teacher(models.Model):
     phone_number = models.CharField(max_length=15,
                                     verbose_name=_('Phone Number'))
     job_title = models.CharField(max_length=15, verbose_name=_('Title'))
+    enabled = models.BooleanField(default=True)
     user = models.OneToOneField(to=User, related_name='teachers')
+
+    def enable(self):
+        """
+        Enable teacher profile
+        :return:
+        """
+        self.enabled = True
+        self.save()
+
+    def disable(self):
+        """
+        Disable teacher profile
+        :return:
+        """
+        self.enabled = False
+        self.save()
