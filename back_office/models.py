@@ -14,7 +14,6 @@ class Teacher(models.Model):
         (MALE, _('Male')),
         (FEMALE, _('Female')),
     )
-    name = models.CharField(max_length=100, verbose_name=_('Name'))
     gender = models.CharField(max_length=1, verbose_name=_('Gender'),
                               choices=GENDET_CHOICES)
     civil_id = models.CharField(max_length=12, verbose_name=_('Civil ID'))
