@@ -8,14 +8,14 @@ MALE = 'M'
 
 class Teacher(models.Model):
     """
-    halaqat teachers informations
+    Halaqat teachers information
     """
-    GENDET_CHOICES = (
+    GENDER_CHOICES = (
         (MALE, _('Male')),
         (FEMALE, _('Female')),
     )
     gender = models.CharField(max_length=1, verbose_name=_('Gender'),
-                              choices=GENDET_CHOICES)
+                              choices=GENDER_CHOICES)
     civil_id = models.CharField(max_length=12, verbose_name=_('Civil ID'))
     phone_number = models.CharField(max_length=15,
                                     verbose_name=_('Phone Number'))
