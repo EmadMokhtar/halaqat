@@ -21,7 +21,7 @@ class Teacher(models.Model):
                                     verbose_name=_('Phone Number'))
     job_title = models.CharField(max_length=15, verbose_name=_('Title'))
     enabled = models.BooleanField(default=True)
-    user = models.OneToOneField(to=User, related_name='teachers')
+    user = models.OneToOneField(to=User, related_name='teacher_profile')
 
     def enable(self):
         """
