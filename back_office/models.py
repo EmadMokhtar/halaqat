@@ -28,13 +28,13 @@ class Teacher(models.Model):
         Enable teacher profile
         :return:
         """
-        self.enabled = True
-        self.save()
+        self.user.is_active = True
+        self.user.save()
 
     def disable(self):
         """
         Disable teacher profile
         :return:
         """
-        self.enabled = False
-        self.save()
+        self.user.is_active = False
+        self.user.save()
