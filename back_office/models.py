@@ -1,6 +1,7 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
-from Django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 FEMALE = 'F'
 MALE = 'M'
@@ -20,7 +21,6 @@ class Teacher(models.Model):
     phone_number = models.CharField(max_length=15,
                                     verbose_name=_('Phone Number'))
     job_title = models.CharField(max_length=15, verbose_name=_('Title'))
-    enabled = models.BooleanField(default=True)
     user = models.OneToOneField(to=User, related_name='teacher_profile')
 
     def enable(self):
@@ -38,3 +38,6 @@ class Teacher(models.Model):
         """
         self.user.is_active = False
         self.user.save()
+
+    def get_absolute_url(self):
+        return reverse('teacher_details', args=(self.pk,))
