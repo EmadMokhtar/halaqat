@@ -6,8 +6,8 @@ from django.shortcuts import redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.core.urlresolvers import reverse
-from .forms import TeacherForm, UserCreationForm, UserChangeForm
-from .models import Teacher
+from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm
+from .models import Teacher, ClassType
 
 
 class TeacherList(ListView):
@@ -69,3 +69,33 @@ class TeacherUpdate(SuccessMessageMixin, UpdateView):
         if user_form.is_valid():
             user_form.save()
         return super(TeacherUpdate, self).form_valid(form)
+
+
+class ClassTypeList(ListView):
+    """
+    Halaqat class type list view
+    """
+    model = ClassType
+    template_name = 'back_office/class_type_list.html'
+    context_object_name = 'class_types'
+    allow_empty = True
+
+
+class ClassTypeCreation(SuccessMessageMixin, CreateView):
+    """
+    Create halaqat class type view
+    """
+    model = ClassType
+    form_class = ClassTypeForm
+    template_name = 'back_office/class_type_form.html'
+    success_message = 'Class Type Created Successfully'
+
+
+class ClassTypeUpdate(SuccessMessageMixin, CreateView):
+    """
+    Update halaqat class type view
+    """
+    model = ClassType
+    form_class = ClassTypeForm
+    template_name = 'back_office/class_type_form.html'
+    success_message = 'Class Type Updated Successfully'
