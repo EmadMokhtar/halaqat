@@ -1,0 +1,28 @@
+{% extends 'back_office/back_office_base.html' %}
+
+{% block title %}
+    Class Types
+{% endblock %}
+
+{% block container %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Monthly Fees</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for class_type in class_types %}
+            <tr>
+                <td><a href="{% url 'class_type_details' class_type.id %}">
+                    {{ class_type.name }}
+                </a>
+                </td>
+                <td>{{ class_type.monthly_fees }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
