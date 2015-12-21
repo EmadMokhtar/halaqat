@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Teacher
+from .models import Teacher, ClassType
 
 
 class UserCreationForm(forms.ModelForm):
@@ -42,3 +42,13 @@ class TeacherForm(forms.ModelForm):
     class Meta:
         model = Teacher
         fields = ['gender', 'civil_id', 'phone_number', 'job_title']
+
+
+class ClassTypeForm(forms.ModelForm):
+    """
+    Form for haqalat Class Type
+    """
+
+    class Meta:
+        model = ClassType
+        fields = ['name', 'monthly_fees']
