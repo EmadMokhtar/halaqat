@@ -41,3 +41,14 @@ class Teacher(models.Model):
 
     def get_absolute_url(self):
         return reverse('teacher_details', args=(self.pk,))
+
+
+class ClassType(models.Model):
+    """
+    Halaqat Class Type information
+    """
+    name = models.CharField(max_length=20, verbose_name=_('Name'))
+    monthly_fees = models.DecimalField(max_digits=6, decimal_places=3, verbose_name=_('Monthly Fees'))
+
+    def get_absolute_url(self):
+        return reverse('class_type_details', args=(self.pk,))
