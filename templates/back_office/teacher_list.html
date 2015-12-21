@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         {% for teacher in teachers %}
-            <td><a href="{% url 'teacher_details' teacher.id %}">
+            <td><a href="{% url 'teacher_details' teacher.pk %}">
                 {{ teacher.user.first_name }} {{ teacher.user.last_name }}
             </a>
             </td>
