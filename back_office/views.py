@@ -91,7 +91,7 @@ class ClassTypeCreation(SuccessMessageMixin, CreateView):
     success_message = 'Class Type Created Successfully'
 
 
-class ClassTypeUpdate(SuccessMessageMixin, CreateView):
+class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
     """
     Update halaqat class type view
     """
