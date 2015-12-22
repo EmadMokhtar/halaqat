@@ -5,24 +5,29 @@
 {% endblock %}
 
 {% block container %}
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Monthly Fees</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for class_type in class_types %}
+    {% if class_types %}
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td><a href="{% url 'class_type_details' class_type.pk %}">
-                    {{ class_type.name }}
-                </a>
-                </td>
-                <td>{{ class_type.monthly_fees }}</td>
+                <th>Name</th>
+                <th>Monthly Fees</th>
             </tr>
-        {% endfor %}
+            </thead>
+            <tbody>
+            {% for class_type in class_types %}
+                <tr>
+                    <td><a href="{% url 'class_type_details' class_type.pk %}">
+                        {{ class_type.name }}
+                    </a>
+                    </td>
+                    <td>{{ class_type.monthly_fees }}</td>
+                </tr>
+            {% endfor %}
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    {% else %}
+        <p class="lead">No class type information to display</p>
+    {% endif %}
+
 {% endblock %}
