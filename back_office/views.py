@@ -1,13 +1,9 @@
-# coding=utf-8
-from django.contrib.messages import success
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
-from django.core.urlresolvers import reverse
-from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm
-from .models import Teacher, ClassType
+from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm, ClassForm
+from .models import Teacher, ClassType, Class
 
 
 class TeacherList(ListView):
@@ -99,3 +95,33 @@ class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
     form_class = ClassTypeForm
     template_name = 'back_office/class_type_form.html'
     success_message = 'Class Type Updated Successfully'
+
+
+class ClassList(ListView):
+    """
+    List of class in halaqat
+    """
+    model = Class
+    template_name = 'back_office/class_list.html'
+    context_object_name = 'classes'
+    allow_empty = True
+
+
+class ClassCreation(SuccessMessageMixin, CreateView):
+    """
+    Create halaqat class view
+    """
+    model = Class
+    form_class = ClassForm
+    template_name = 'back_office/class_form.html'
+    success_message = 'Class Created Successfully'
+
+
+class ClassUpdate(SuccessMessageMixin, UpdateView):
+    """
+    Update halaqat class view
+    """
+    model = Class
+    form_class = ClassForm
+    template_name = 'back_office/class_form.html'
+    success_message = 'Class Updated Successfully'
