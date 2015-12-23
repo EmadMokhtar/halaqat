@@ -1,0 +1,48 @@
+{% extends 'back_office/back_office_base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block title %}
+    Class Form
+{% endblock %}
+{% block container %}
+    <form method="post">{% csrf_token %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Class Information</h3>
+            </div>
+            <div class="panel-body">
+                {{ form|crispy }}
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datetimepicker.min.css' %}">
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/moment-with-locales.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script type="application/javascript">
+    $(function(){
+        $(".dateinput").datetimepicker({
+            format: 'dd/mm/yyyy',
+            minView: 'month',
+            maxView: 'decade',
+            autoclose: true
+        });
+        $(".timeinput").datetimepicker({
+            format: 'HH:ii P',
+            minView: 'hour',
+            maxView: 'day',
+            startView: 'day',
+            autoclose: true,
+            showMeridian: true,
+            minuteStep: 15
+        });
+    });
+    </script>
+{% endblock %}
