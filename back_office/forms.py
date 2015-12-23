@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Teacher, ClassType
+from .models import Teacher, ClassType, Class, DAYS_CHOICES
 
 
 class UserCreationForm(forms.ModelForm):
@@ -52,3 +52,22 @@ class ClassTypeForm(forms.ModelForm):
     class Meta:
         model = ClassType
         fields = ['name', 'monthly_fees']
+
+
+class ClassForm(forms.ModelForm):
+    """
+    Form for halaqat class
+    """
+
+    days = forms.MultipleChoiceField(choices=DAYS_CHOICES, widget=forms.CheckboxSelectMultiple(), localize=True)
+    first_semester_start = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
+    first_semester_end = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
+    second_semester_start = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
+    second_semester_end = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
+    start_time = forms.TimeField(localize=True, input_formats=['%I:%M %p'])
+    end_time = forms.TimeField(localize=True, input_formats=['%I:%M %p'])
+
+    class Meta:
+        model = Class
+        fields = ['name', 'type', 'gender', 'teacher', 'days', 'start_time', 'end_time',
+                  'first_semester_start', 'first_semester_end','second_semester_start', 'second_semester_end']
