@@ -20,16 +20,18 @@
             </thead>
             <tbody>
             {% for teacher in teachers %}
-                <td><a href="{% url 'teacher_details' teacher.pk %}">
-                    {{ teacher.user.first_name }} {{ teacher.user.last_name }}
-                </a>
-                </td>
-                <td>{{ teacher.user.email }}</td>
-                <td>{{ teacher.user.username }}</td>
-                <td>{{ teacher.get_gender_display }}</td>
-                <td>{{ teacher.civil_id }}</td>
-                <td>{{ teacher.phone_number }}</td>
-                <td>{{ teacher.job_title }}</td>
+                <tr>
+                    <td><a href="{% url 'teacher_details' teacher.pk %}">
+                        {{ teacher.user.first_name }} {{ teacher.user.last_name }}
+                    </a>
+                    </td>
+                    <td>{{ teacher.user.email }}</td>
+                    <td>{{ teacher.user.username }}</td>
+                    <td>{{ teacher.get_gender_display }}</td>
+                    <td>{{ teacher.civil_id }}</td>
+                    <td>{{ teacher.phone_number }}</td>
+                    <td>{{ teacher.job_title }}</td>
+                </tr>
             {% endfor %}
 
             </tbody>
