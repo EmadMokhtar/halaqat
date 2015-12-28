@@ -4,10 +4,11 @@ from django.test import TestCase
 from .models import ClassType
 
 
-class ClassTypeClassTypeTestCases(TestCase):
+class ClassTypeTestCases(TestCase):
     """
     Testing Class Type model
     """
+    
     def setUp(self):
         self.class_type, created = ClassType.objects.get_or_create(name='Class Type 1',
                                                                    monthly_fees=Decimal(12))
@@ -17,7 +18,7 @@ class ClassTypeClassTypeTestCases(TestCase):
                                    monthly_fees=Decimal(10))
         new_class_type.save()
 
-        self.assertEqual(type(new_class_type), ClassType)
+        self.assertIsInstance(new_class_type, ClassType)
         self.assertTrue(new_class_type.pk)
 
     def test_update_class_type(self):
