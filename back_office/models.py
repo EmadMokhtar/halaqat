@@ -48,6 +48,14 @@ class Teacher(models.Model):
         self.user.is_active = False
         self.user.save()
 
+    def delete(self, using=None):
+        """
+        Disable the teacher account instead of deleting it
+        :param using:
+        :return:
+        """
+        return self.disable()
+
     def get_absolute_url(self):
         return reverse('teacher_details', args=(self.pk,))
 
