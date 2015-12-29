@@ -58,7 +58,7 @@ class Teacher(models.Model):
         return self.disable()
 
     def get_absolute_url(self):
-        return reverse('teacher_details', args=(self.pk,))
+        return reverse('teacher-details', args=(self.pk,))
 
     def __str__(self):
         return u'%s %s' % (self.user.first_name, self.user.last_name)
@@ -89,7 +89,7 @@ class ClassType(models.Model):
     monthly_fees = models.DecimalField(max_digits=6, decimal_places=3, verbose_name=_('Monthly Fees'))
 
     def get_absolute_url(self):
-        return reverse('class_type_details', args=(self.pk,))
+        return reverse('class_type-details', args=(self.pk,))
 
     def __str__(self):
         return u'%s' % self.name
@@ -118,4 +118,4 @@ class Class(models.Model):
         return json.loads(self.days)
 
     def get_absolute_url(self):
-        return reverse('class_details', args=(self.pk,))
+        return reverse('class-details', args=(self.pk,))
