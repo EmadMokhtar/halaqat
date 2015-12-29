@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
@@ -28,8 +29,8 @@ class Teacher(models.Model):
                               choices=GENDER_CHOICES)
     civil_id = models.CharField(max_length=12, verbose_name=_('Civil ID'))
     phone_number = models.CharField(max_length=15,
-                                    verbose_name=_('Phone Number'))
-    job_title = models.CharField(max_length=15, verbose_name=_('Title'))
+                                    verbose_name=_('Phone Number'), blank=True)
+    job_title = models.CharField(max_length=15, verbose_name=_('Title'), blank=True)
     user = models.OneToOneField(to=User, related_name='teacher_profile')
 
     def enable(self):
@@ -61,6 +62,23 @@ class Teacher(models.Model):
 
     def __str__(self):
         return u'%s %s' % (self.user.first_name, self.user.last_name)
+
+    def clean(self):
+        if not self.pk:
+            teacher = Teacher.objects.filter(user__first_name=self.user.first_name,
+                                             user__last_name=self.user.last_name,
+                                             civil_id=self.civil_id)
+            if teacher:
+                raise ValidationError({'civil_id': _('Teacher with name and civil id is exists')})
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.full_clean()
+        super(Teacher, self).save(force_insert, force_update, using, update_fields)
+
+    @property
+    def full_name(self):
+        return self.user.get_full_name() if self.user.get_full_name() else self.user.username
 
 
 class ClassType(models.Model):
