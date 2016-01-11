@@ -64,7 +64,7 @@ class Teacher(models.Model):
         return u'%s %s' % (self.user.first_name, self.user.last_name)
 
     def clean(self):
-        if not self.pk:
+        if not self.pk is None:
             teacher = Teacher.objects.filter(user__first_name=self.user.first_name,
                                              user__last_name=self.user.last_name,
                                              civil_id=self.civil_id)
