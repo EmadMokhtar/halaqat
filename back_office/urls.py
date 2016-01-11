@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^class-type/(?P<pk>\d+)$', views.ClassTypeUpdate.as_view(), name='class_type-detail'),
     url(r'^class/$', views.ClassList.as_view(), name='class-list'),
     url(r'^class/new/$', views.ClassCreation.as_view(), name='class-new'),
-    url(r'^class/(?P<pk>\d+)$', views.ClassUpdate.as_view(), name='class-details'),
+    url(r'^class/(?P<pk>\d+)$', views.ClassUpdate.as_view(), name='class-detail'),
 ]

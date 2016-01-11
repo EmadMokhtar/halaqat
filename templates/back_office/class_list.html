@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             {% for class in classes %}
-                <td><a href="{% url 'class_details' class.pk %}">
+                <td><a href="{% url 'class-detail' class.pk %}">
                     {{ class.name }}
                 </a>
                 </td>
