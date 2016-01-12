@@ -110,3 +110,22 @@ class Class(models.Model):
 
     def get_absolute_url(self):
         return reverse('class-details', args=(self.pk,))
+
+    def clean_semester_dates(self):
+        if self.first_semester_start > self.first_semester_end:
+            raise ValidationError({'first_semester_start': _('invalid first semester start date is invalid')})
+        elif self.first_semester_end > self.second_semester_start:
+            raise ValidationError({'first_semester_end': _('invalid first semester start date is invalid')})
+        elif self.second_semester_start > self.second_semester_end:
+            raise ValidationError({'second_semester_start': _('invalid first semester start date is invalid')})
+
+    def clean(self, *args, **kwargs):
+        if self.gender != self.teacher.gender:
+            raise ValidationError({'teacher': _('Class gender and teacher gender are not match')})
+        self.clean_semester_dates()
+        super(Class, self).clean(*args, **kwargs)
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.full_clean()
+        super(Class, self).save(force_insert, force_update, using, update_fields)
