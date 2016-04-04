@@ -1,8 +1,9 @@
+import json
+
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
-import json
 from django.contrib.auth.models import User
 
 GENDER_CHOICES = (
