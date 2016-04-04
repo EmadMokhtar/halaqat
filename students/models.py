@@ -30,7 +30,8 @@ class Student(models.Model):
     parent_number = models.CharField(max_length=12, verbose_name=_('Parents'))
     grade = models.CharField(max_length=5, verbose_name=_('Grade'))
     school = models.CharField(max_length=12, verbose_name=_('School'))
-    nationality = models.ForeignKey(Nationality, verbose_name=_('Nationality'))
+    nationality = models.ForeignKey(Nationality, verbose_name=_('Nationality'),
+                                    null=True)
     address = models.CharField(max_length=150, verbose_name=_('Address'))
     email = models.EmailField(verbose_name=_('Email'))
     parent_email = models.EmailField(verbose_name=_('Parent Email'))
