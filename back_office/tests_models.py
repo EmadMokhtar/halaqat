@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import ClassType, Teacher, Class
+from .models import ClassType, Teacher, HalaqatClass
 
 
 class ClassTypeTestCases(TestCase):
@@ -38,7 +38,8 @@ class ClassTypeTestCases(TestCase):
     def test_create_class_type_with_duplicate_names(self):
         new_class_type = ClassType(name='Class Type 1',
                                    monthly_fees=Decimal(10))
-        self.assertRaises(IntegrityError, lambda: new_class_type.save())
+        with self.assertRaises(IntegrityError):
+            new_class_type.save()
 
 
 class TeacherTestCases(TestCase):
@@ -97,38 +98,39 @@ class ClassTestCases(TestCase):
                                                                    civil_id='123123')
         self.female_user = User.objects.create_user('female_user', 'f.user@company.com', 'password',
                                                     first_name='first_name')
-        self.female_teacher, created = Teacher.objects.get_or_create(user=self.female_user, gender='F',
+        self.female_teacher, created = Teacher.objects.get_or_create(user=self.female_user,
+                                                                     gender='F',
                                                                      civil_id='9860876')
         self.class_type, created = ClassType.objects.get_or_create(name='Class Type 1',
                                                                    monthly_fees=Decimal(12))
-        self.halaqat_class, created = Class.objects.get_or_create(teacher=self.male_teacher,
-                                                                  name='Class 101',
-                                                                  type=self.class_type,
-                                                                  gender='M',
-                                                                  days=['SUN', 'WED'],
-                                                                  start_time=time(20),
-                                                                  end_time=time(22),
-                                                                  first_semester_start=date(2015, 9, 1),
-                                                                  first_semester_end=date(2015, 10, 30),
-                                                                  second_semester_start=date(2016, 2, 1),
-                                                                  second_semester_end=date(2016, 6, 1))
+        self.halaqat_class, created = HalaqatClass.objects.get_or_create(teacher=self.male_teacher,
+                                                                         name='Class 101',
+                                                                         class_type=self.class_type,
+                                                                         gender='M',
+                                                                         days=['SUN', 'WED'],
+                                                                         start_time=time(20),
+                                                                         end_time=time(22),
+                                                                         first_semester_start=date(2015, 9, 1),
+                                                                         first_semester_end=date(2015, 10, 30),
+                                                                         second_semester_start=date(2016, 2, 1),
+                                                                         second_semester_end=date(2016, 6, 1))
 
     def test_creating_new_class(self):
-        new_halaqat_class = Class(teacher=self.male_teacher,
-                                  name='Class 101',
-                                  type=self.class_type,
-                                  gender='M',
-                                  days=['SUN', 'WED'],
-                                  start_time=time(20),
-                                  end_time=time(22),
-                                  first_semester_start=date(2015, 9, 1),
-                                  first_semester_end=date(2015, 10, 30),
-                                  second_semester_start=date(2016, 2, 1),
-                                  second_semester_end=date(2016, 6, 1))
+        new_halaqat_class = HalaqatClass(teacher=self.male_teacher,
+                                         name='Class 101',
+                                         class_type=self.class_type,
+                                         gender='M',
+                                         days=['SUN', 'WED'],
+                                         start_time=time(20),
+                                         end_time=time(22),
+                                         first_semester_start=date(2015, 9, 1),
+                                         first_semester_end=date(2015, 10, 30),
+                                         second_semester_start=date(2016, 2, 1),
+                                         second_semester_end=date(2016, 6, 1))
         new_halaqat_class.save()
 
         self.assertTrue(new_halaqat_class.pk)
-        self.assertIsInstance(new_halaqat_class, Class)
+        self.assertIsInstance(new_halaqat_class, HalaqatClass)
 
     def test_update_class(self):
         new_days = ['MON', 'THU']
@@ -141,61 +143,126 @@ class ClassTestCases(TestCase):
         self.halaqat_class.delete()
 
         self.assertFalse(self.halaqat_class.pk)
-        self.assertIsInstance(self.halaqat_class, Class)
+        self.assertIsInstance(self.halaqat_class, HalaqatClass)
 
     def test_assign_male_teacher_to_male_class(self):
-        male_halaqat_class = Class(teacher=self.male_teacher,
-                                   name='Class 101',
-                                   type=self.class_type,
-                                   gender='M',
-                                   days=['SUN', 'WED'],
-                                   start_time=time(20),
-                                   end_time=time(22),
-                                   first_semester_start=date(2015, 9, 1),
-                                   first_semester_end=date(2015, 10, 30),
-                                   second_semester_start=date(2016, 2, 1),
-                                   second_semester_end=date(2016, 6, 1))
+        male_halaqat_class = HalaqatClass(teacher=self.male_teacher,
+                                          name='Class 101',
+                                          class_type=self.class_type,
+                                          gender='M',
+                                          days=['SUN', 'WED'],
+                                          start_time=time(20),
+                                          end_time=time(22),
+                                          first_semester_start=date(2015, 9, 1),
+                                          first_semester_end=date(2015, 10, 30),
+                                          second_semester_start=date(2016, 2, 1),
+                                          second_semester_end=date(2016, 6, 1))
         male_halaqat_class.save()
 
         self.assertTrue(male_halaqat_class.pk)
-        self.assertIsInstance(male_halaqat_class, Class)
+        self.assertIsInstance(male_halaqat_class, HalaqatClass)
 
     def test_assign_female_teacher_to_female_class(self):
-        male_halaqat_class = Class(teacher=self.female_teacher,
-                                   name='Class 101',
-                                   type=self.class_type,
-                                   gender='F',
-                                   days=['SUN', 'WED'],
-                                   start_time=time(20),
-                                   end_time=time(22),
-                                   first_semester_start=date(2015, 9, 1),
-                                   first_semester_end=date(2015, 10, 30),
-                                   second_semester_start=date(2016, 2, 1),
-                                   second_semester_end=date(2016, 6, 1))
+        male_halaqat_class = HalaqatClass(teacher=self.female_teacher,
+                                          name='Class 101',
+                                          class_type=self.class_type,
+                                          gender='F',
+                                          days=['SUN', 'WED'],
+                                          start_time=time(20),
+                                          end_time=time(22),
+                                          first_semester_start=date(2015, 9, 1),
+                                          first_semester_end=date(2015, 10, 30),
+                                          second_semester_start=date(2016, 2, 1),
+                                          second_semester_end=date(2016, 6, 1))
         male_halaqat_class.save()
 
         self.assertTrue(male_halaqat_class.pk)
-        self.assertIsInstance(male_halaqat_class, Class)
+        self.assertIsInstance(male_halaqat_class, HalaqatClass)
 
     def test_assign_female_teacher_to_male_class(self):
-        male_halaqat_class = Class(teacher=self.female_teacher,
-                                   name='Class 101',
-                                   type=self.class_type,
-                                   gender='M',
-                                   days=['SUN', 'WED'],
-                                   start_time=time(20),
-                                   end_time=time(22),
-                                   first_semester_start=date(2015, 9, 1),
-                                   first_semester_end=date(2015, 10, 30),
-                                   second_semester_start=date(2016, 2, 1),
-                                   second_semester_end=date(2016, 6, 1))
+        male_halaqat_class = HalaqatClass(teacher=self.female_teacher,
+                                          name='Class 101',
+                                          class_type=self.class_type,
+                                          gender='M',
+                                          days=['SUN', 'WED'],
+                                          start_time=time(20),
+                                          end_time=time(22),
+                                          first_semester_start=date(2015, 9, 1),
+                                          first_semester_end=date(2015, 10, 30),
+                                          second_semester_start=date(2016, 2, 1),
+                                          second_semester_end=date(2016, 6, 1))
 
-        self.assertRaises(ValidationError, lambda: male_halaqat_class.save())
+        with self.assertRaises(ValidationError):
+            male_halaqat_class.save()
 
     def test_assign_male_teacher_to_female_class(self):
-        female_halaqat_class = Class(teacher=self.male_teacher,
+        female_halaqat_class = HalaqatClass(teacher=self.male_teacher,
+                                            name='Class 101',
+                                            class_type=self.class_type,
+                                            gender='F',
+                                            days=['SUN', 'WED'],
+                                            start_time=time(20),
+                                            end_time=time(22),
+                                            first_semester_start=date(2015, 9, 1),
+                                            first_semester_end=date(2015, 10, 30),
+                                            second_semester_start=date(2016, 2, 1),
+                                            second_semester_end=date(2016, 6, 1))
+
+        with self.assertRaises(ValidationError):
+            female_halaqat_class.save()
+
+    def test_set_wrong_first_semester_start_date_should_fail(self):
+        halaqat_class = HalaqatClass(teacher=self.female_teacher,
                                      name='Class 101',
-                                     type=self.class_type,
+                                     class_type=self.class_type,
+                                     gender='F',
+                                     days=['SUN', 'WED'],
+                                     start_time=time(20),
+                                     end_time=time(22),
+                                     first_semester_start=date(2015, 11, 1),
+                                     first_semester_end=date(2015, 10, 30),
+                                     second_semester_start=date(2016, 2, 1),
+                                     second_semester_end=date(2016, 6, 1))
+
+        with self.assertRaises(ValidationError):
+            halaqat_class.save()
+
+    def test_set_wrong_first_semester_end_date_should_fail(self):
+        halaqat_class = HalaqatClass(teacher=self.female_teacher,
+                                     name='Class 101',
+                                     class_type=self.class_type,
+                                     gender='F',
+                                     days=['SUN', 'WED'],
+                                     start_time=time(20),
+                                     end_time=time(22),
+                                     first_semester_start=date(2015, 9, 1),
+                                     first_semester_end=date(2015, 6, 30),
+                                     second_semester_start=date(2016, 2, 1),
+                                     second_semester_end=date(2016, 6, 1))
+
+        with self.assertRaises(ValidationError):
+            halaqat_class.save()
+
+    def test_set_wrong_second_semester_start_date_should_fail(self):
+        halaqat_class = HalaqatClass(teacher=self.female_teacher,
+                                     name='Class 101',
+                                     class_type=self.class_type,
+                                     gender='F',
+                                     days=['SUN', 'WED'],
+                                     start_time=time(20),
+                                     end_time=time(22),
+                                     first_semester_start=date(2015, 9, 1),
+                                     first_semester_end=date(2015, 10, 30),
+                                     second_semester_start=date(2015, 2, 1),
+                                     second_semester_end=date(2016, 6, 1))
+
+        with self.assertRaises(ValidationError):
+            halaqat_class.save()
+
+    def test_set_wrong_second_semester_end_date_should_fail(self):
+        halaqat_class = HalaqatClass(teacher=self.female_teacher,
+                                     name='Class 101',
+                                     class_type=self.class_type,
                                      gender='F',
                                      days=['SUN', 'WED'],
                                      start_time=time(20),
@@ -203,68 +270,15 @@ class ClassTestCases(TestCase):
                                      first_semester_start=date(2015, 9, 1),
                                      first_semester_end=date(2015, 10, 30),
                                      second_semester_start=date(2016, 2, 1),
-                                     second_semester_end=date(2016, 6, 1))
+                                     second_semester_end=date(2015, 6, 1))
 
-        self.assertRaises(ValidationError, lambda: female_halaqat_class.save())
-
-    def test_set_wrong_first_semester_start_date_should_fail(self):
-        halaqat_class = Class(teacher=self.female_teacher,
-                              name='Class 101',
-                              type=self.class_type,
-                              gender='F',
-                              days=['SUN', 'WED'],
-                              start_time=time(20),
-                              end_time=time(22),
-                              first_semester_start=date(2015, 11, 1),
-                              first_semester_end=date(2015, 10, 30),
-                              second_semester_start=date(2016, 2, 1),
-                              second_semester_end=date(2016, 6, 1))
-
-        self.assertRaises(ValidationError, lambda: halaqat_class.save())
-
-    def test_set_wrong_first_semester_end_date_should_fail(self):
-        halaqat_class = Class(teacher=self.female_teacher,
-                              name='Class 101',
-                              type=self.class_type,
-                              gender='F',
-                              days=['SUN', 'WED'],
-                              start_time=time(20),
-                              end_time=time(22),
-                              first_semester_start=date(2015, 9, 1),
-                              first_semester_end=date(2015, 6, 30),
-                              second_semester_start=date(2016, 2, 1),
-                              second_semester_end=date(2016, 6, 1))
-
-        self.assertRaises(ValidationError, lambda: halaqat_class.save())
-
-    def test_set_wrong_second_semester_start_date_should_fail(self):
-        halaqat_class = Class(teacher=self.female_teacher,
-                              name='Class 101',
-                              type=self.class_type,
-                              gender='F',
-                              days=['SUN', 'WED'],
-                              start_time=time(20),
-                              end_time=time(22),
-                              first_semester_start=date(2015, 9, 1),
-                              first_semester_end=date(2015, 10, 30),
-                              second_semester_start=date(2015, 2, 1),
-                              second_semester_end=date(2016, 6, 1))
-
-        self.assertRaises(ValidationError, lambda: halaqat_class.save())
-
-    def test_set_wrong_second_semester_end_date_should_fail(self):
-        halaqat_class = Class(teacher=self.female_teacher,
-                              name='Class 101',
-                              type=self.class_type,
-                              gender='F',
-                              days=['SUN', 'WED'],
-                              start_time=time(20),
-                              end_time=time(22),
-                              first_semester_start=date(2015, 9, 1),
-                              first_semester_end=date(2015, 10, 30),
-                              second_semester_start=date(2016, 2, 1),
-                              second_semester_end=date(2015, 6, 1))
-
-        self.assertRaises(ValidationError, lambda: halaqat_class.save())
+        with self.assertRaises(ValidationError):
+            halaqat_class.save()
 
         # TODO Check that no class with the same type, dates, and teacher
+
+    def test_enroll_one_student(self):
+        pass
+
+    def test_enroll_many_student(self):
+        pass

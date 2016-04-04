@@ -6,7 +6,7 @@ from master_data.models import Nationality
 
 class NationalityModeTestCases(TestCase):
     def setUp(self):
-        self.nationality, created = Nationality(name='Egyptian')
+        self.nationality, created = Nationality.objects.get_or_create(name='Egyptian')
 
     def test_create_new_nationality(self):
         new_nationality = Nationality(name='American')
