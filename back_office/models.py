@@ -32,7 +32,7 @@ class Teacher(models.Model):
                                  blank=True)
     user = models.OneToOneField(to=User, related_name='teacher_profile')
     nationality = models.ForeignKey(Nationality, verbose_name=_('Nationality'),
-                                    null=True)
+                                    null=True, blank=True)
 
     def enable(self):
         """
