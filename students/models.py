@@ -1,5 +1,6 @@
 from django.db import models
-from master_data.models import Nationality
+from django.utils.translation import ugettext as _
+from master_data.models import Nationality, GENDER_CHOICES
 from back_office.models import Class
 
 PENDING = 'P'

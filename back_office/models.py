@@ -6,10 +6,7 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 
-GENDER_CHOICES = (
-    (u'M', _(u'Male')),
-    (u'F', _(u'Female')),
-)
+from master_data.models import Nationality, GENDER_CHOICES
 
 DAYS_CHOICES = (
     (u'SAT', _(u'Saturday')),
