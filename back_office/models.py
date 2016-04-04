@@ -31,6 +31,8 @@ class Teacher(models.Model):
     job_title = models.CharField(max_length=15, verbose_name=_('Title'),
                                  blank=True)
     user = models.OneToOneField(to=User, related_name='teacher_profile')
+    nationality = models.ForeignKey(Nationality, verbose_name=_('Nationality'),
+                                    null=True)
 
     def enable(self):
         """
