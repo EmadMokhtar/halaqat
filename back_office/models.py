@@ -87,12 +87,12 @@ class ClassType(models.Model):
         return u'%s' % self.name
 
 
-class Class(models.Model):
+class HalaqatClass(models.Model):
     """
     Halaqat Class
     """
     name = models.CharField(max_length=20, verbose_name=_('Name'))
-    type = models.ForeignKey(to=ClassType, verbose_name=_('Type'), related_name='classes')
+    class_type = models.ForeignKey(to=ClassType, verbose_name=_('Type'), related_name='classes')
     gender = models.CharField(max_length=2, verbose_name=_('Gender'), choices=GENDER_CHOICES)
     teacher = models.ForeignKey(to=Teacher, verbose_name=_('Teacher'), related_name='classes')
     first_semester_start = models.DateField(verbose_name=_('1st Semester Start Date'))
@@ -124,9 +124,9 @@ class Class(models.Model):
         if self.gender != self.teacher.gender:
             raise ValidationError({'teacher': _('Class gender and teacher gender are not match')})
         self.clean_semester_dates()
-        super(Class, self).clean(*args, **kwargs)
+        super(HalaqatClass, self).clean(*args, **kwargs)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         self.full_clean()
-        super(Class, self).save(force_insert, force_update, using, update_fields)
+        super(HalaqatClass, self).save(force_insert, force_update, using, update_fields)
