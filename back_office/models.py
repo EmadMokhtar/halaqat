@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
-
 from master_data.models import Nationality, GENDER_CHOICES
 
 DAYS_CHOICES = (
@@ -25,10 +24,12 @@ class Teacher(models.Model):
     """
     gender = models.CharField(max_length=1, verbose_name=_('Gender'),
                               choices=GENDER_CHOICES)
-    civil_id = models.CharField(max_length=12, verbose_name=_('Civil ID'), unique=True)
+    civil_id = models.CharField(max_length=12, verbose_name=_('Civil ID'),
+                                unique=True)
     phone_number = models.CharField(max_length=15,
                                     verbose_name=_('Phone Number'), blank=True)
-    job_title = models.CharField(max_length=15, verbose_name=_('Title'), blank=True)
+    job_title = models.CharField(max_length=15, verbose_name=_('Title'),
+                                 blank=True)
     user = models.OneToOneField(to=User, related_name='teacher_profile')
 
     def enable(self):
