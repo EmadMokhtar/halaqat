@@ -6,4 +6,7 @@ urlpatterns = [
     url(r'^$',
         view=views.StudentList.as_view(),
         name='student-list'),
+    url(r'^new/$',
+        view=views.StudentCreation.as_view(),
+        name='student-new'),
 ]
