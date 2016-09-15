@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -23,7 +24,6 @@ class Student(models.Model):
     """
     Halaqat Student
     """
-    name = models.CharField(max_length=25, verbose_name=_('Name'))
     dob = models.DateField()
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,
                               default='M', verbose_name=_('Gender'))
@@ -38,12 +38,11 @@ class Student(models.Model):
                                     null=True, blank=True)
     address = models.CharField(max_length=150, verbose_name=_('Address'),
                                blank=True)
-    email = models.EmailField(verbose_name=_('Email'), blank=True)
     parent_email = models.EmailField(verbose_name=_('Parent Email'), blank=True)
     halaqat_class = models.ForeignKey(to=HalaqatClass, null=True, blank=True)
     enrollment_date = models.DateField(verbose_name=_('Enrollment Date'),
-                                       blank=True)
-    old_enrollment_date = models.DateField(blank=True,
+                                       null=True)
+    old_enrollment_date = models.DateField(null=True,
                                            verbose_name=_('Previous Center Enrollment Date'))
     chapter_memorized = models.IntegerField(default=0,
                                             verbose_name=_('Chapters Memorized'))
@@ -65,3 +64,6 @@ class Student(models.Model):
     def on_leave(self):
         self.status = ON_LEAVE
         self.save()
+
+    def get_absolute_url(self):
+        return reverse('student-detail', args=(self.pk,))
