@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+
 from back_office import urls as back_office_url
+from students import urls as students_url
 
 urlpatterns = [
     url(r'^back_office/', include(back_office_url)),
+    url(r'^students/', include(students_url)),
     url(r'^admin/', include(admin.site.urls)),
 ]
