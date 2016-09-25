@@ -9,4 +9,7 @@ urlpatterns = [
     url(r'^new/$',
         view=views.StudentCreation.as_view(),
         name='student-new'),
+    url(r'^(?P<pk>\d+)/',
+        view=views.StudentChangeView.as_view(),
+        name='student-detail'),
 ]
