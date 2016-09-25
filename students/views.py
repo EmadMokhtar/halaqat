@@ -31,19 +31,13 @@ class StudentCreationView(SuccessMessageMixin, generic.CreateView):
 
     def form_valid(self, form):
         user_form = UserCreationForm(self.request.POST)
-        if not user_form.is_valid():
-            return self.render_to_response({'form': form,
-                                            'user_form': user_form})
-        try:
-            with transaction.atomic():
-                user = user_form.save()
-                student = form.save(commit=False)
-                student.user = user
-                student.save()
-                return HttpResponseRedirect(self.get_success_url())
-        except Exception:
-             return self.render_to_response({'form': form,
-                                             'user_form': user_form})
+        if user_form.is_valid():
+            user = user_form.save()
+            student = form.save(commit=False)
+            student.user = user
+            student.save()
+
+        return super(StudentCreationView, self).form_valid(form)
 
     def form_invalid(self, form):
         user_form = UserCreationForm(self.request.POST)
