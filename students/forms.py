@@ -6,7 +6,9 @@ from students.models import Student
 
 
 class StudentForm(forms.ModelForm):
-    dob = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+    dob = forms.DateField(widget=forms.DateInput(
+                          attrs={'class': 'datepicker'})
+                          )
     address = forms.CharField(widget=forms.Textarea())
     helper = FormHelper()
     helper.form_tag = False
@@ -75,9 +77,10 @@ class StudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ('dob', 'gender', 'civil_id', 'mobile_number', 'home_number', 'parent_number',
-                  'grade', 'school', 'nationality', 'address', 'parent_email', 'halaqat_class',
-                  'chapter_memorized', 'chapter_memorized_with_center', 'status')
+        fields = ('dob', 'gender', 'civil_id', 'mobile_number', 'home_number',
+                  'parent_number', 'grade', 'school', 'nationality', 'address',
+                  'parent_email', 'halaqat_class', 'chapter_memorized',
+                  'chapter_memorized_with_center', 'status')
 
 
 class StudentChangeForm(forms.ModelForm):
