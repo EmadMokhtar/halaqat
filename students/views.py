@@ -9,23 +9,24 @@ from .forms import StudentForm, StudentChangeForm
 from back_office.forms import UserCreationForm, UserChangeForm
 
 
-class StudentList(generic.ListView):
+class StudentListView(generic.ListView):
     model = Student
     context_object_name = 'students'
     template_name = 'students/student_list.html'
     allow_empty = True
 
 
-class StudentCreation(SuccessMessageMixin, generic.CreateView):
+
+class StudentCreationView(SuccessMessageMixin, generic.CreateView):
     template_name = 'students/student_form.html'
     form_class = StudentForm
     model = Student
-    second_from_class = UserCreationForm
+    second_form_class = UserCreationForm
     success_message = 'Student profile saved successfully'
 
     def get_context_data(self, **kwargs):
-        context = super(StudentCreation, self).get_context_data(**kwargs)
-        context['user_form'] = self.second_from_class
+        context = super(StudentCreationView, self).get_context_data(**kwargs)
+        context['user_form'] = self.second_form_class
         return context
 
     def form_valid(self, form):
