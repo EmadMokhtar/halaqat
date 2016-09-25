@@ -1,6 +1,10 @@
+import operator
+from functools import reduce
+
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import ugettext as _
 
 from back_office.models import HalaqatClass
@@ -18,6 +22,24 @@ STATUS_CHOICES = (
     (SUSPENDED, _('Suspended')),
     (ON_LEAVE, _('On Leave')),
 )
+
+
+class StudnetManager(models.Manager):
+    def search(self, search_terms):
+        terms = [term.strip() for term in search_terms.split()]
+        q_objects = []
+
+        for term in terms:
+            q_objects.append(Q(civil_id__icontains=term))
+            q_objects.append(Q(mobile_number__icontains=term))
+            q_objects.append(Q(home_number__icontains=term))
+            q_objects.append(Q(parent_number__icontains=term))
+            q_objects.append(Q(user__first_name__icontains=term))
+            q_objects.append(Q(user__last_name__icontains=term))
+
+
+        # Start with a bare QuerySet
+        return self.filter(reduce(operator.or_,q_objects))
 
 
 class Student(models.Model):
@@ -52,6 +74,7 @@ class Student(models.Model):
                               default=PENDING,
                               verbose_name=_('Status'))
     user = models.ForeignKey(User, related_name='student_profile')
+    objects = StudnetManager()
 
     def activate(self):
         self.status = ACTIVE
