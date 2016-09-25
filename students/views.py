@@ -14,7 +14,14 @@ class StudentListView(generic.ListView):
     context_object_name = 'students'
     template_name = 'students/student_list.html'
     allow_empty = True
+    paginate_by = 25
 
+    def get_queryset(self):
+        result = super(StudentListView, self).get_queryset()
+        search_query = self.request.GET.get('q', None)
+        if search_query:
+            result = Student.objects.search(search_query)
+        return result
 
 
 class StudentCreationView(SuccessMessageMixin, generic.CreateView):
