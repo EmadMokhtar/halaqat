@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm, ClassForm
-from .models import Teacher, ClassType, Class
+from .models import Teacher, ClassType, HalaqatClass
 
 
 class TeacherList(ListView):
@@ -101,7 +101,7 @@ class ClassList(ListView):
     """
     List of class in halaqat
     """
-    model = Class
+    model = HalaqatClass
     template_name = 'back_office/class_list.html'
     context_object_name = 'classes'
     allow_empty = True
@@ -111,7 +111,7 @@ class ClassCreation(SuccessMessageMixin, CreateView):
     """
     Create halaqat class view
     """
-    model = Class
+    model = HalaqatClass
     form_class = ClassForm
     template_name = 'back_office/class_form.html'
     success_message = 'Class Created Successfully'
@@ -121,7 +121,7 @@ class ClassUpdate(SuccessMessageMixin, UpdateView):
     """
     Update halaqat class view
     """
-    model = Class
+    model = HalaqatClass
     form_class = ClassForm
     template_name = 'back_office/class_form.html'
     success_message = 'Class Updated Successfully'
