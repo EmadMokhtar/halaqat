@@ -37,9 +37,8 @@ class StudnetManager(models.Manager):
             q_objects.append(Q(user__first_name__icontains=term))
             q_objects.append(Q(user__last_name__icontains=term))
 
-
         # Start with a bare QuerySet
-        return self.filter(reduce(operator.or_,q_objects))
+        return self.filter(reduce(operator.or_, q_objects))
 
 
 class Student(models.Model):

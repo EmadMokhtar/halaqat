@@ -1,7 +1,5 @@
-from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
-from django.db import transaction
 
 from .models import Student
 from .forms import StudentForm, StudentChangeForm
