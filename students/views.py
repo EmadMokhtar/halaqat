@@ -1,5 +1,6 @@
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Student
 from .forms import StudentForm, StudentChangeForm
@@ -27,7 +28,7 @@ class StudentCreationView(SuccessMessageMixin, generic.CreateView):
     form_class = StudentForm
     model = Student
     second_form_class = UserCreationForm
-    success_message = 'Student profile saved successfully'
+    success_message = _('Student profile saved successfully')
 
     def get_context_data(self, **kwargs):
         context = super(StudentCreationView, self).get_context_data(**kwargs)
@@ -55,7 +56,7 @@ class StudentChangeView(SuccessMessageMixin, generic.UpdateView):
     form_class = StudentChangeForm
     model = Student
     second_form_class = UserChangeForm
-    success_message = 'Student profile saved successfully'
+    success_message = _('Student profile saved successfully')
 
     def get_context_data(self, **kwargs):
         context = super(StudentChangeView, self).get_context_data(**kwargs)

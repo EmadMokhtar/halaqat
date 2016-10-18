@@ -1,6 +1,8 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
-from django.views.generic import ListView
+from django.http import HttpResponseRedirect, JsonResponse
+from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm, ClassForm
 from .models import Teacher, ClassType, HalaqatClass
@@ -20,11 +22,11 @@ class TeacherCreation(SuccessMessageMixin, CreateView):
     """
     Creates new teacher
     """
-    template_name = 'back_office/teacher_form.html'
+    template_name = "back_office/teacher_form.html"
     form_class = TeacherForm
     model = Teacher
     second_form_class = UserCreationForm
-    success_message = 'Teacher profile saved successfully'
+    success_message = _("Teacher profile created successfully")
 
     def get_context_data(self, **kwargs):
         context = super(TeacherCreation, self).get_context_data(**kwargs)
@@ -51,12 +53,12 @@ class TeacherUpdate(SuccessMessageMixin, UpdateView):
     template_name = 'back_office/teacher_form.html'
     form_class = TeacherForm
     second_form_class = UserChangeForm
-    success_message = 'Teacher profile saved successfully'
+    success_message = _("Teacher profile updated successfully")
 
     def get_context_data(self, **kwargs):
         context = super(TeacherUpdate, self).get_context_data(**kwargs)
-
-        context['user_form'] = self.second_form_class(self.request.POST or None, instance=self.object.user)
+        context['user_form'] = self.second_form_class(self.request.POST or None,
+                                                      instance=self.object.user)
 
         return context
 
@@ -84,7 +86,7 @@ class ClassTypeCreation(SuccessMessageMixin, CreateView):
     model = ClassType
     form_class = ClassTypeForm
     template_name = 'back_office/class_type_form.html'
-    success_message = 'Class Type Created Successfully'
+    success_message = _("Class Type created successfully")
 
 
 class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
@@ -94,7 +96,7 @@ class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
     model = ClassType
     form_class = ClassTypeForm
     template_name = 'back_office/class_type_form.html'
-    success_message = 'Class Type Updated Successfully'
+    success_message = _("Class Type updated successfully")
 
 
 class ClassList(ListView):
@@ -114,7 +116,7 @@ class ClassCreation(SuccessMessageMixin, CreateView):
     model = HalaqatClass
     form_class = ClassForm
     template_name = 'back_office/class_form.html'
-    success_message = 'Class Created Successfully'
+    success_message = _("Class created successfully")
 
 
 class ClassUpdate(SuccessMessageMixin, UpdateView):
@@ -124,4 +126,4 @@ class ClassUpdate(SuccessMessageMixin, UpdateView):
     model = HalaqatClass
     form_class = ClassForm
     template_name = 'back_office/class_form.html'
-    success_message = 'Class Updated Successfully'
+    success_message = _("Class updated successfully")

@@ -1,7 +1,7 @@
 {% extends 'back_office/back_office_base.html' %}
 {% load i18n %}
 {% block title %}
-    Class Types
+    {% trans "Class Types" %}
 {% endblock %}
 
 {% block container %}
@@ -9,8 +9,8 @@
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Monthly Fees</th>
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Monthly Fees" %}</th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +27,6 @@
             </tbody>
         </table>
     {% else %}
-        <p class="lead">No class type information to display</p>
+        <p class="lead">{% trans "No class type information to display" %}</p>
     {% endif %}
-
 {% endblock %}
