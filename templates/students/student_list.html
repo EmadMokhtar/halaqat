@@ -2,18 +2,22 @@
 {% load i18n %}
 {% load bootstrap_label %}
 {% block title %}
-Students
+{% trans "Students" %}
 {% endblock %}
 {% block container %}
 <div class="row">
     <div class="col-md-9">
-        <a class="btn btn-default" href="{% url 'student-new' %}">New Studnet</a>
+        <a class="btn btn-default" href="{% url 'student-new' %}">
+            {% trans "New Studnet" %}
+        </a>
     </div>
     <div class="col-md-3">
         <form class="form-inline" method="get">
             <div class="form-group">
                 <input type="text" id='q' name='q' class="form-control" placeholder="Search">
-                <button type="submit" class="btn btn-default">Seach</button>
+                <button type="submit" class="btn btn-default">
+                    {% trans "Search" %}
+                </button>
             </div>
         </form>
     </div>
@@ -22,14 +26,14 @@ Students
 <table class="table table-hover table-striped">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Civil Id</th>
-            <th>Gender</th>
-            <th>Status</th>
-            <th>Mobile#</th>
-            <th>Parent#</th>
-            <th>Class</th>
+            <th>{% trans "ID" %}</th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Civil ID" %}</th>
+            <th>{% trans "Gender" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "Mobile#" %}</th>
+            <th>{% trans "Parent#" %}</th>
+            <th>{% trans "Class" %}</th>
         </tr>
     </thead>
     <tbody>
@@ -57,18 +61,8 @@ Students
 </table>
 {% include "parts/paginator.html" %}
 {% else %}
-<p class="lead">No Students to display</p>
+<p class="lead">{% trans "No Students to display" %}</p>
 {% endif %}
 {% endblock %}
 {% block scripts %}
-<script>
-// $(function(){
-//     $(".paginator_link").attr("href", function() {
-//         console.log(this);
-//         page = $(this).data('page');
-//         href = window.location;
-//         return href + '&page=' + page;
-//     });
-// });
-</script>
 {% endblock %}

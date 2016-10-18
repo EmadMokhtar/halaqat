@@ -1,11 +1,14 @@
 from django import template
-from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
 
-lable_type = {_('Pending'): 'default',
-              _('Active'): 'success',
-              _('Suspended'): 'danger',
-              _('On Leave'): 'warning'
+lable_type = {'Pending': 'default',
+              'Active': 'success',
+              'Suspended': 'danger',
+              'On Leave': 'warning',
+              'غير ملتحق': 'default',
+              'ملتحق': 'success',
+              'موقوف': 'danger',
+              'في أجازة': 'warning',
               }
 
 register = template.Library()

@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% block title %}
-    Student Form
+    {% trans "Student Form" %}
 {% endblock %}
 {% block container %}
     <form method="post">{% csrf_token %}
@@ -11,7 +11,7 @@
         {% crispy form %}
         <button class="btn btn-primary" type="submit">
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-            Save
+            {% trans "Save" %}
         </button>
     </form>
 {% endblock %}
