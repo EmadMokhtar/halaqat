@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
-from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib import admin
 
 from back_office import urls as back_office_url
 from students import urls as students_url

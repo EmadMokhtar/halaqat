@@ -1,11 +1,12 @@
 import json
 
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
-from django.contrib.auth.models import User
-from master_data.models import Nationality, GENDER_CHOICES
+
+from master_data.models import GENDER_CHOICES, Nationality
 
 DAYS_CHOICES = (
     (u'SAT', _(u'Saturday')),
@@ -59,7 +60,7 @@ class Teacher(models.Model):
         return self.disable()
 
     def get_absolute_url(self):
-        return reverse('teacher-details', args=(self.pk,))
+        return reverse('teacher-detail', args=(self.pk,))
 
     def __str__(self):
         return u'%s %s' % (self.user.first_name, self.user.last_name)
@@ -81,7 +82,7 @@ class ClassType(models.Model):
     monthly_fees = models.DecimalField(max_digits=6, decimal_places=3, verbose_name=_('Monthly Fees'))
 
     def get_absolute_url(self):
-        return reverse('class_type-details', args=(self.pk,))
+        return reverse('class_type-detail', args=(self.pk,))
 
     def __str__(self):
         return u'%s' % self.name
@@ -110,7 +111,7 @@ class HalaqatClass(models.Model):
         return json.loads(self.days)
 
     def get_absolute_url(self):
-        return reverse('class-details', args=(self.pk,))
+        return reverse('class-detail', args=(self.pk,))
 
     def clean_semester_dates(self):
         if self.first_semester_start > self.first_semester_end:
@@ -130,3 +131,6 @@ class HalaqatClass(models.Model):
              update_fields=None):
         self.full_clean()
         super(HalaqatClass, self).save(force_insert, force_update, using, update_fields)
+
+    def __str__(self):
+        return self.name

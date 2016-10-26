@@ -1,14 +1,47 @@
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import HTML, Div, Layout
 from django import forms
 from django.contrib.auth.models import User
-from .models import Teacher, ClassType, HalaqatClass, DAYS_CHOICES
+
+from .models import DAYS_CHOICES, ClassType, HalaqatClass, Teacher
 
 
 class UserCreationForm(forms.ModelForm):
     """
     New user form
     """
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.layout = Layout(
+        Div(
+            Div(
+                HTML('<h3 class="panel-title">User Info</h3>'),
+                css_class='panel-heading',
+            ),
+            Div(
+                Div(
+                    Div('first_name', css_class='col-md-6'),
+                    Div('last_name', css_class='col-md-6'),
+                    css_class='row'
+                ),
+                Div(
+                    Div('username', css_class='col-md-6'),
+                    Div('email', css_class='col-md-6'),
+                    css_class='row'),
+                Div(
+                    Div('password1', css_class='col-md-6'),
+                    Div('password2', css_class='col-md-6'),
+                    css_class='row'
+                )
+                ,css_class='panel-body'),
+            css_class='panel panel-default',
+        ),
+    )
+
+    password1 = forms.CharField(label='Password',
+                                widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Password confirmation',
+                                widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -24,7 +57,31 @@ class UserCreationForm(forms.ModelForm):
 
 
 class UserChangeForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    username = forms.CharField(widget=forms.TextInput(
+                              attrs={'readonly': 'readonly'})
+                              )
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.layout = Layout(
+        Div(
+            Div(
+                HTML('<h3 class="panel-title">User Info</h3>'),
+                css_class='panel-heading',
+            ),
+            Div(
+                Div(
+                    Div('first_name', css_class='col-md-6'),
+                    Div('last_name', css_class='col-md-6'),
+                    css_class='row'
+                ),
+                Div(
+                    Div('username', css_class='col-md-6'),
+                    Div('email', css_class='col-md-6'),
+                    css_class='row'),
+                css_class='panel-body'),
+            css_class='panel panel-default',
+        ),
+    )
 
     class Meta:
         model = User
@@ -38,6 +95,28 @@ class TeacherForm(forms.ModelForm):
     """
     Form for teacher model
     """
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.layout = Layout(
+        Div(
+            Div(
+                HTML('<h3 class="panel-title">Teacher Info</h3>'),
+                css_class='panel-heading',
+            ),
+            Div(
+                Div(
+                    Div('civil_id', css_class='col-md-6'),
+                    Div('gender', css_class='col-md-6'),
+                    css_class='row'
+                ),
+                Div(
+                    Div('phone_number', css_class='col-md-6'),
+                    Div('job_title', css_class='col-md-6'),
+                    css_class='row')
+                , css_class='panel-body'),
+            css_class='panel panel-default',
+        ),
+    )
 
     class Meta:
         model = Teacher
@@ -59,15 +138,25 @@ class ClassForm(forms.ModelForm):
     Form for halaqat class
     """
 
-    days = forms.MultipleChoiceField(choices=DAYS_CHOICES, widget=forms.CheckboxSelectMultiple(), localize=True)
-    first_semester_start = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
-    first_semester_end = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
-    second_semester_start = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
-    second_semester_end = forms.DateField(localize=True, input_formats=['%d/%m/%Y'])
-    start_time = forms.TimeField(localize=True, input_formats=['%I:%M %p'])
-    end_time = forms.TimeField(localize=True, input_formats=['%I:%M %p'])
+    days = forms.MultipleChoiceField(choices=DAYS_CHOICES,
+                                     widget=forms.CheckboxSelectMultiple(),
+                                     localize=True)
+    first_semester_start = forms.DateField(localize=True,
+                                           input_formats=['%d/%m/%Y'])
+    first_semester_end = forms.DateField(localize=True,
+                                         input_formats=['%d/%m/%Y'])
+    second_semester_start = forms.DateField(localize=True,
+                                            input_formats=['%d/%m/%Y'])
+    second_semester_end = forms.DateField(localize=True,
+                                          input_formats=['%d/%m/%Y'])
+    start_time = forms.TimeField(localize=True,
+                                 input_formats=['%I:%M %p'])
+    end_time = forms.TimeField(localize=True,
+                               input_formats=['%I:%M %p'])
 
     class Meta:
         model = HalaqatClass
-        fields = ['name', 'class_type', 'gender', 'teacher', 'days', 'start_time', 'end_time',
-                  'first_semester_start', 'first_semester_end','second_semester_start', 'second_semester_end']
+        fields = ['name', 'class_type', 'gender', 'teacher', 'days',
+                  'start_time', 'end_time', 'first_semester_start',
+                  'first_semester_end', 'second_semester_start',
+                  'second_semester_end']

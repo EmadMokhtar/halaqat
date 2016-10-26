@@ -1,11 +1,11 @@
-from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import ugettext_lazy as _
+from django.views import generic
 
+from back_office.forms import UserChangeForm, UserCreationForm
+
+from .forms import StudentChangeForm, StudentForm
 from .models import Student
-from .forms import StudentForm, StudentChangeForm
-
-from back_office.forms import UserCreationForm, UserChangeForm
 
 
 class StudentListView(generic.ListView):

@@ -4,9 +4,9 @@ from decimal import Decimal
 from django.contrib.auth.models import User
 from django.test import TestCase
 
-from back_office.models import Teacher, ClassType, HalaqatClass
-from students.models import Student
+from back_office.models import ClassType, HalaqatClass, Teacher
 from helpers import generate_random_numbers
+from students.models import Student
 
 
 class StudentModelTestCase(TestCase):

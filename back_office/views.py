@@ -4,8 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView
-from .forms import TeacherForm, UserCreationForm, UserChangeForm, ClassTypeForm, ClassForm
-from .models import Teacher, ClassType, HalaqatClass
+
+from .forms import (ClassForm, ClassTypeForm, TeacherForm, UserChangeForm,
+                    UserCreationForm)
+from .models import ClassType, HalaqatClass, Teacher
 
 
 class TeacherList(ListView):

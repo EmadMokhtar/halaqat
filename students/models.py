@@ -8,8 +8,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from back_office.models import HalaqatClass
-from master_data.models import Nationality, GENDER_CHOICES
-
+from master_data.models import GENDER_CHOICES, Nationality
 
 PENDING = 'P'
 ACTIVE = 'A'

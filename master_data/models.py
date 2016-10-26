@@ -1,6 +1,5 @@
-from django.utils.translation import ugettext as _
 from django.db import models
-
+from django.utils.translation import ugettext as _
 
 GENDER_CHOICES = (
     (u'M', _(u'Male')),

@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, HTML
+from crispy_forms.layout import HTML, Div, Layout
 from django import forms
 
 from students.models import Student

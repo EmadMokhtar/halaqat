@@ -1,10 +1,12 @@
-from datetime import time, date
+from datetime import date, time
 from decimal import Decimal
+
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
-from django.contrib.auth.models import User
-from .models import ClassType, Teacher, HalaqatClass
+
+from .models import ClassType, HalaqatClass, Teacher
 
 
 class ClassTypeTestCases(TestCase):
