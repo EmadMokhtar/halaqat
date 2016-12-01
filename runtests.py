@@ -28,7 +28,6 @@ def flake8_main(args):
 
 def run_django_tests_with_coverage():
     if __name__ == "__main__":
-        os.environ['DJANGO_SETTINGS_MODULE'] = 'halaqat.settings.local_settings'
         # Set up and start test coverage
         cov = coverage.coverage(source=APPS, omit=EXCLUDE_FILES)
         cov.start()
