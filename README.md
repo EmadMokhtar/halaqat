@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/EmadMokhtar/halaqat.png?label=ready&title=Ready)](https://waffle.io/EmadMokhtar/halaqat) ![Codeship badge](https://codeship.com/projects/fb06c070-99ce-0134-528f-7e59fd3fff7f/status?branch=master)
+[![Stories in Ready](https://badge.waffle.io/EmadMokhtar/halaqat.png?label=ready&title=Ready)](https://waffle.io/EmadMokhtar/halaqat) [![Codeship badge](https://codeship.com/projects/fb06c070-99ce-0134-528f-7e59fd3fff7f/status?branch=master)](https://app.codeship.com/projects/187798)
 
 # Halaqat - حلقات
 
