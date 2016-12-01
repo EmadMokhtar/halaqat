@@ -1,93 +1,97 @@
-{% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-{% get_language_info for LANGUAGE_CODE as lang %}
-{% get_available_languages as LANGUAGES %}
+{% load i18n %} {% get_current_language as LANGUAGE_CODE %} {% get_language_info for LANGUAGE_CODE as lang %} {% get_available_languages as LANGUAGES %} {% get_current_language_bidi as RTL %}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">{% trans "Halaqt - Back Office" %}</a>
-    </div>
+            <a class="navbar-brand" href="">{% trans "Halaqt - Back Office" %}</a>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">{% trans "Teachers" %}<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{% url 'teacher-list' %}">
-                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                        {% trans "All" %}</a></li>
-                        <li><a href="{% url 'teacher-new' %}">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            {% trans "New" %}</a></li>
-                        </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Teachers" %}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'teacher-list' %}">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> {% trans "All" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'teacher-new' %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans "New" %}</a>
+                        </li>
+                    </ul>
 
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{% trans "Class Types" %}<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'class_type-list' %}">
-                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                                {% trans "All" %}</a></li>
-                                <li><a href="{% url 'class_type-new' %}">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    {% trans "New" %}</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">{% trans "Classes" %}<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'class-list' %}">
-                                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                                        {% trans "All" %}</a></li>
-                                        <li><a href="{% url 'class-new' %}">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        {% trans "New" %}</a></li>
-                                        </ul>
-                                    </li>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Class Types" %}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'class_type-list' %}">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> {% trans "All" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'class_type-new' %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans "New" %}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Classes" %}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'class-list' %}">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> {% trans "All" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'class-new' %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans "New" %}</a>
+                        </li>
+                    </ul>
+                </li>
 
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">{% trans "Students" %}<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{% url 'student-list' %}">
-                                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                                                {% trans "All" %}</a></li>
-                                                <li><a href="{% url 'student-new' %}">
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                    {% trans "New" %}</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li class="dropdown navbar-right">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                                aria-expanded="false">{{ lang.name_local }}<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    {% for lang_code, lang_name in LANGUAGES %}
-                                                    {% language lang_code %}
-                                                    <li>
-                                                        <a href="/{{ lang_code }}{{ request.get_full_path|slice:'3:' }}"
-                                                        class="{% if lang_code == LANGUAGE_CODE %}selected{% endif %}"
-                                                        lang="{{ lang_code }}">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Students" %}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'student-list' %}">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> {% trans "All" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'student-new' %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans "New" %}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            {% if RTL %}
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown navbar-left">
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown navbar-right">
+                            {% endif %}
+
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ lang.name_local }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% for lang_code, lang_name in LANGUAGES %} {% language lang_code %}
+                                <li>
+                                    <a href="/{{ lang_code }}{{ request.get_full_path|slice:'3:' }}" class="{% if lang_code == LANGUAGE_CODE %}selected{% endif %}" lang="{{ lang_code }}">
                                                         {{ lang_name }}</a>
-                                                    </li>
-                                                    {% endlanguage %}
-                                                    {% endfor %}
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div><!-- /.navbar-collapse -->
-                                </div><!-- /.container-fluid -->
-                            </nav>
+                                </li>
+                                {% endlanguage %} {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
