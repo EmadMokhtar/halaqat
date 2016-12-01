@@ -1,4 +1,4 @@
--r requirements.txt
+-r requirements/requirements.txt
 configparser==3.5.0
 coverage==4.2
 flake8==3.0.4
