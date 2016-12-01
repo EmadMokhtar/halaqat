@@ -1,5 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/EmadMokhtar/halaqat.png?label=ready&title=Ready)](https://waffle.io/EmadMokhtar/halaqat)
 
+https://codeship.com/projects/fb06c070-99ce-0134-528f-7e59fd3fff7f/status?branch=master
+
 # Halaqat - حلقات
 
 ## About the project
