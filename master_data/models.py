@@ -6,6 +6,7 @@ GENDER_CHOICES = (
     (u'F', _(u'Female')),
 )
 
+
 class Nationality(models.Model):
     """
     Nationality

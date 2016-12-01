@@ -32,8 +32,8 @@ class UserCreationForm(forms.ModelForm):
                     Div('password1', css_class='col-md-6'),
                     Div('password2', css_class='col-md-6'),
                     css_class='row'
-                )
-                ,css_class='panel-body'),
+                ),
+                css_class='panel-body'),
             css_class='panel panel-default',
         ),
     )
@@ -58,8 +58,8 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(
-                              attrs={'readonly': 'readonly'})
-                              )
+        attrs={'readonly': 'readonly'})
+    )
     helper = FormHelper()
     helper.form_tag = False
     helper.layout = Layout(
@@ -112,8 +112,7 @@ class TeacherForm(forms.ModelForm):
                 Div(
                     Div('phone_number', css_class='col-md-6'),
                     Div('job_title', css_class='col-md-6'),
-                    css_class='row')
-                , css_class='panel-body'),
+                    css_class='row'), css_class='panel-body'),
             css_class='panel panel-default',
         ),
     )

@@ -50,11 +50,14 @@ class TeacherTestCases(TestCase):
     """
 
     def setUp(self):
-        self.user = User.objects.create_user('user', 'user@company.com', 'password', first_name='first_name')
-        self.teacher, created = Teacher.objects.get_or_create(user=self.user, gender='M', civil_id='123123')
+        self.user = User.objects.create_user(
+            'user', 'user@company.com', 'password', first_name='first_name')
+        self.teacher, created = Teacher.objects.get_or_create(
+            user=self.user, gender='M', civil_id='123123')
 
     def test_creating_new_teacher(self):
-        new_user = User.objects.create_user('new_teacher', 'user@company.com', 'password')
+        new_user = User.objects.create_user(
+            'new_teacher', 'user@company.com', 'password')
         new_teacher = Teacher(user=new_user, gender='M', civil_id='34534')
         new_teacher.save()
 
@@ -109,12 +112,18 @@ class ClassTestCases(TestCase):
                                                                          name='Class 101',
                                                                          class_type=self.class_type,
                                                                          gender='M',
-                                                                         days=['SUN', 'WED'],
-                                                                         start_time=time(20),
-                                                                         end_time=time(22),
-                                                                         first_semester_start=date(2015, 9, 1),
-                                                                         first_semester_end=date(2015, 10, 30),
-                                                                         second_semester_start=date(2016, 2, 1),
+                                                                         days=[
+                                                                             'SUN', 'WED'],
+                                                                         start_time=time(
+                                                                             20),
+                                                                         end_time=time(
+                                                                             22),
+                                                                         first_semester_start=date(
+                                                                             2015, 9, 1),
+                                                                         first_semester_end=date(
+                                                                             2015, 10, 30),
+                                                                         second_semester_start=date(
+                                                                             2016, 2, 1),
                                                                          second_semester_end=date(2016, 6, 1))
 
     def test_creating_new_class(self):
@@ -127,7 +136,8 @@ class ClassTestCases(TestCase):
                                          end_time=time(22),
                                          first_semester_start=date(2015, 9, 1),
                                          first_semester_end=date(2015, 10, 30),
-                                         second_semester_start=date(2016, 2, 1),
+                                         second_semester_start=date(
+                                             2016, 2, 1),
                                          second_semester_end=date(2016, 6, 1))
         new_halaqat_class.save()
 
@@ -135,7 +145,7 @@ class ClassTestCases(TestCase):
         self.assertIsInstance(new_halaqat_class, HalaqatClass)
 
     def test_update_class(self):
-        new_days = ['MON', 'THU']
+        new_days = "['MON', 'THU']"
         self.halaqat_class.days = new_days
         self.halaqat_class.save()
 
@@ -155,9 +165,12 @@ class ClassTestCases(TestCase):
                                           days=['SUN', 'WED'],
                                           start_time=time(20),
                                           end_time=time(22),
-                                          first_semester_start=date(2015, 9, 1),
-                                          first_semester_end=date(2015, 10, 30),
-                                          second_semester_start=date(2016, 2, 1),
+                                          first_semester_start=date(
+                                              2015, 9, 1),
+                                          first_semester_end=date(
+                                              2015, 10, 30),
+                                          second_semester_start=date(
+                                              2016, 2, 1),
                                           second_semester_end=date(2016, 6, 1))
         male_halaqat_class.save()
 
@@ -172,9 +185,12 @@ class ClassTestCases(TestCase):
                                           days=['SUN', 'WED'],
                                           start_time=time(20),
                                           end_time=time(22),
-                                          first_semester_start=date(2015, 9, 1),
-                                          first_semester_end=date(2015, 10, 30),
-                                          second_semester_start=date(2016, 2, 1),
+                                          first_semester_start=date(
+                                              2015, 9, 1),
+                                          first_semester_end=date(
+                                              2015, 10, 30),
+                                          second_semester_start=date(
+                                              2016, 2, 1),
                                           second_semester_end=date(2016, 6, 1))
         male_halaqat_class.save()
 
@@ -189,9 +205,12 @@ class ClassTestCases(TestCase):
                                           days=['SUN', 'WED'],
                                           start_time=time(20),
                                           end_time=time(22),
-                                          first_semester_start=date(2015, 9, 1),
-                                          first_semester_end=date(2015, 10, 30),
-                                          second_semester_start=date(2016, 2, 1),
+                                          first_semester_start=date(
+                                              2015, 9, 1),
+                                          first_semester_end=date(
+                                              2015, 10, 30),
+                                          second_semester_start=date(
+                                              2016, 2, 1),
                                           second_semester_end=date(2016, 6, 1))
 
         with self.assertRaises(ValidationError):
@@ -205,9 +224,12 @@ class ClassTestCases(TestCase):
                                             days=['SUN', 'WED'],
                                             start_time=time(20),
                                             end_time=time(22),
-                                            first_semester_start=date(2015, 9, 1),
-                                            first_semester_end=date(2015, 10, 30),
-                                            second_semester_start=date(2016, 2, 1),
+                                            first_semester_start=date(
+                                                2015, 9, 1),
+                                            first_semester_end=date(
+                                                2015, 10, 30),
+                                            second_semester_start=date(
+                                                2016, 2, 1),
                                             second_semester_end=date(2016, 6, 1))
 
         with self.assertRaises(ValidationError):

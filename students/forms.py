@@ -21,20 +21,20 @@ class StudentForm(forms.ModelForm):
             Div(
                 Div(
                     Div('civil_id', css_class='col-md-6'),
-                    Div('dob', css_class='col-md-6')
-                    , css_class='row'
+                    Div('dob', css_class='col-md-6'),
+                    css_class='row'
                 ),
                 Div(
                     Div('gender', css_class='col-md-6'),
-                    Div('nationality', css_class='col-md-6')
-                    , css_class='row'
+                    Div('nationality', css_class='col-md-6'),
+                    css_class='row'
                 ),
                 Div(
                     Div('school', css_class='col-md-6'),
-                    Div('grade', css_class='col-md-6')
-                    , css_class='row'
-                )
-                , css_class='panel-body'),  # Fields
+                    Div('grade', css_class='col-md-6'),
+                    css_class='row'
+                ),
+                css_class='panel-body'),  # Fields
             css_class='panel panel-default', ),
         Div(
             Div(
@@ -44,16 +44,16 @@ class StudentForm(forms.ModelForm):
             Div(
                 Div(
                     Div('mobile_number', css_class='col-md-6'),
-                    Div('home_number', css_class='col-md-6')
-                    , css_class='row'),
+                    Div('home_number', css_class='col-md-6'),
+                    css_class='row'),
                 Div(
                     Div('parent_number', css_class='col-md-6'),
-                    Div('parent_email', css_class='col-md-6')
-                    , css_class='row'),
+                    Div('parent_email', css_class='col-md-6'),
+                    css_class='row'),
                 Div(
-                    Div('address', css_class='col-md-12')
-                    , css_class='row')
-                , css_class='panel-body'),  # Fields
+                    Div('address', css_class='col-md-12'),
+                    css_class='row'),
+                css_class='panel-body'),  # Fields
             css_class='panel panel-default', ),
         Div(
             Div(
@@ -63,16 +63,14 @@ class StudentForm(forms.ModelForm):
             Div(
                 Div(
                     Div('halaqat_class', css_class='col-md-6'),
-                    Div('status', css_class='col-md-6')
-                    , css_class='row'),
+                    Div('status', css_class='col-md-6'), css_class='row'),
                 Div(
                     Div('chapter_memorized', css_class='col-md-6'),
-                    Div('chapter_memorized_with_center', css_class='col-md-6')
-                    , css_class='row'
-                    )
-                , css_class='panel-body'),  # Fields
+                    Div('chapter_memorized_with_center', css_class='col-md-6'),
+                    css_class='row'),
+                css_class='panel-body'),  # Fields
             css_class='panel panel-default',
-            ),
+        ),
     )
 
     class Meta:
@@ -99,20 +97,16 @@ class StudentChangeForm(forms.ModelForm):
             Div(
                 Div(
                     Div('civil_id', css_class='col-md-6'),
-                    Div('dob', css_class='col-md-6')
-                    , css_class='row'
+                    Div('dob', css_class='col-md-6'), css_class='row'
                 ),
                 Div(
                     Div('gender', css_class='col-md-6'),
-                    Div('nationality', css_class='col-md-6')
-                    , css_class='row'
+                    Div('nationality', css_class='col-md-6'), css_class='row'
                 ),
                 Div(
                     Div('school', css_class='col-md-6'),
-                    Div('grade', css_class='col-md-6')
-                    , css_class='row'
-                )
-                , css_class='panel-body'),  # Fields
+                    Div('grade', css_class='col-md-6'), css_class='row'
+                ), css_class='panel-body'),  # Fields
             css_class='panel panel-default', ),
         Div(
             Div(
@@ -122,16 +116,13 @@ class StudentChangeForm(forms.ModelForm):
             Div(
                 Div(
                     Div('mobile_number', css_class='col-md-6'),
-                    Div('home_number', css_class='col-md-6')
-                    , css_class='row'),
+                    Div('home_number', css_class='col-md-6'), css_class='row'),
                 Div(
                     Div('parent_number', css_class='col-md-6'),
-                    Div('parent_email', css_class='col-md-6')
-                    , css_class='row'),
-                Div(
-                    Div('address', css_class='col-md-12')
-                    , css_class='row')
-                , css_class='panel-body'),  # Fields
+                    Div('parent_email', css_class='col-md-6'),
+                    css_class='row'),
+                Div(Div('address', css_class='col-md-12'), css_class='row'),
+                css_class='panel-body'),  # Fields
             css_class='panel panel-default', ),
         Div(
             Div(
@@ -141,16 +132,14 @@ class StudentChangeForm(forms.ModelForm):
             Div(
                 Div(
                     Div('halaqat_class', css_class='col-md-6'),
-                    Div('status', css_class='col-md-6')
-                    , css_class='row'),
+                    Div('status', css_class='col-md-6'), css_class='row'),
                 Div(
                     Div('chapter_memorized', css_class='col-md-6'),
-                    Div('chapter_memorized_with_center', css_class='col-md-6')
-                    , css_class='row'
-                    )
-                , css_class='panel-body'),  # Fields
+                    Div('chapter_memorized_with_center', css_class='col-md-6'),
+                    css_class='row'),
+                css_class='panel-body'),  # Fields
             css_class='panel panel-default',
-            ),
+        ),
     )
 
     class Meta:
