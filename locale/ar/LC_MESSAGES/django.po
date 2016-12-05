@@ -130,7 +130,7 @@ msgstr "نوع الحلقة ونوع المحفظ مختلفين"
 
 #: back_office/views.py:29
 msgid "Teacher profile created successfully"
-msgstr "تم انشاء ملف المحفز بنجاح"
+msgstr "تم انشاء ملف المحفظ بنجاح"
 
 #: back_office/views.py:56
 msgid "Teacher profile updated successfully"
