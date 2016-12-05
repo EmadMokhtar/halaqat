@@ -61,11 +61,11 @@ msgstr "الرقم المدني"
 
 #: back_office/models.py:30
 msgid "Phone Number"
-msgstr "رقم التلفون"
+msgstr "رقم التليفون"
 
 #: back_office/models.py:31 templates/back_office/teacher_list.html:17
 msgid "Title"
-msgstr ""
+msgstr "اللقب"
 
 #: back_office/models.py:34 students/models.py:58
 msgid "Nationality"
@@ -109,11 +109,11 @@ msgstr "تاريخ أنتهاء الفصل الثاني"
 
 #: back_office/models.py:102
 msgid "Start Time"
-msgstr "وقت البداية"
+msgstr "من الساعة"
 
 #: back_office/models.py:103
 msgid "End Time"
-msgstr "وقت الإنتهاء"
+msgstr "إلى الساعة"
 
 #: back_office/models.py:104
 msgid "Days"
@@ -122,35 +122,35 @@ msgstr "الأيام"
 #: back_office/models.py:117 back_office/models.py:119
 #: back_office/models.py:121
 msgid "invalid first semester start date is invalid"
-msgstr ""
+msgstr "تاريخ بداية الفصل الدراسي الأول غير صحيح"
 
 #: back_office/models.py:125
 msgid "Class gender and teacher gender are not match"
-msgstr ""
+msgstr "نوع الحلقة ونوع المحفظ مختلفين"
 
 #: back_office/views.py:29
 msgid "Teacher profile created successfully"
-msgstr ""
+msgstr "تم انشاء ملف المحفز بنجاح"
 
 #: back_office/views.py:56
 msgid "Teacher profile updated successfully"
-msgstr ""
+msgstr "تم تعديل ملف المحفظ بنجاح"
 
 #: back_office/views.py:89
 msgid "Class Type created successfully"
-msgstr ""
+msgstr "تم انشاء نوع الحلقة بنجاح"
 
 #: back_office/views.py:99
 msgid "Class Type updated successfully"
-msgstr ""
+msgstr "تم تعديل نوع الحلقة بنجاح"
 
 #: back_office/views.py:119
 msgid "Class created successfully"
-msgstr ""
+msgstr "تم انشاء الحلقة بنجاح"
 
 #: back_office/views.py:129
 msgid "Class updated successfully"
-msgstr ""
+msgstr "تم تعديل الحلقة بنجاح"
 
 #: halaqat/settings/base_settings.py:100
 msgid "Arabic"
@@ -198,7 +198,7 @@ msgstr "ولي الأمر"
 
 #: students/models.py:56
 msgid "Grade"
-msgstr ""
+msgstr "الصف"
 
 #: students/models.py:57
 msgid "School"
@@ -210,7 +210,7 @@ msgstr "العنوان"
 
 #: students/models.py:62
 msgid "Parent Email"
-msgstr "بريد الألكتروني لولي الأمر"
+msgstr "البريد الألكتروني لولي الأمر"
 
 #: students/models.py:64
 msgid "Enrollment Date"
@@ -234,15 +234,15 @@ msgstr "الحالة"
 
 #: students/views.py:31 students/views.py:59
 msgid "Student profile saved successfully"
-msgstr ""
+msgstr "تم حفظ ملف الطالب بنجاح"
 
 #: templates/back_office/class_form.html:6
 msgid "Class Form"
-msgstr ""
+msgstr "الحلقة"
 
 #: templates/back_office/class_form.html:12
 msgid "Class Information"
-msgstr ""
+msgstr "معلومات الحلقة"
 
 #: templates/back_office/class_form.html:18
 #: templates/back_office/class_type_form.html:17
@@ -272,33 +272,33 @@ msgstr "تاريخ أنتهاء الفصل الثاني"
 #, fuzzy
 #| msgid "Start Time"
 msgid "Start Date"
-msgstr "وقت البداية"
+msgstr "من الساعة"
 
 #: templates/back_office/class_list.html:23
 #: templates/back_office/class_list.html:25
 #, fuzzy
 #| msgid "End Time"
 msgid "End Date"
-msgstr "وقت الإنتهاء"
+msgstr "إلى الساعة"
 
 #: templates/back_office/class_list.html:45
 msgid "No classes to display"
-msgstr ""
+msgstr "لا توجد حلقات"
 
 #: templates/back_office/class_type_form.html:5
 msgid "Class Type Form"
-msgstr "لا يوجد حلقات"
+msgstr "نوع الحلقة"
 
 #: templates/back_office/class_type_form.html:11
 msgid "Class Type Information"
-msgstr "نوع الحلقة"
+msgstr "معلومات نوع الحلقة"
 
 #: templates/back_office/class_type_list.html:4
 #: templates/back_office/menu.html:37
 #, fuzzy
 #| msgid "Classes"
 msgid "Class Types"
-msgstr "الحلقات"
+msgstr "انواع الحلقات"
 
 #: templates/back_office/class_type_list.html:30
 msgid "No class type information to display"
