@@ -14,6 +14,18 @@ The project main goal is to make the process inside centers paperless and fast.
 
 البرنامج هدفه جعل تنظيم الحلقات بدون ورق وإستخدام التكنولوجية لمساعدة مراكز تحفيظ القرأن
 
+# Run locally
+
+* Make sure that you have Python 3.5 installed on your machine.
+* Clone the repository `git clone https://github.com/EmadMokhtar/halaqat`
+* Go to repository directory `cd halaqat`
+* Install requirements `pip install -r requirements/requirements.txt`
+* Add Secret key environment variable `export SECRET_KEY="Hamada-Bel-Ganzabeel"`
+* Add Django settings module environment variable `export DJANGO_SETTINGS_MODULE="haqalat.settings.local_settings"`
+* Do Django migration `python manage.py migrate`
+* Run Django development server `python manage.py runserver`
+* Open browser and go to http://127.0.0.1:8000
+
 
 # Packages Used
 ## Backend
