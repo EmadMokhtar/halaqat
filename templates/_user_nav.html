@@ -1,0 +1,13 @@
+{% load i18n %}
+<li class="dropdown {% if RTL %} navbar-left {% else %} navbar-right {% endif %}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ request.user.username }}<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{% url "logout" %}">
+                    {% trans "Logout" %}
+                </a>
+            </li>
+        </ul>
+    </li>
