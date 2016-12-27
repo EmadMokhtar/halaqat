@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
@@ -8,7 +9,7 @@ from .forms import StudentChangeForm, StudentForm
 from .models import Student
 
 
-class StudentListView(generic.ListView):
+class StudentListView(LoginRequiredMixin, generic.ListView):
     model = Student
     context_object_name = 'students'
     template_name = 'students/student_list.html'
@@ -23,7 +24,9 @@ class StudentListView(generic.ListView):
         return result
 
 
-class StudentCreationView(SuccessMessageMixin, generic.CreateView):
+class StudentCreationView(LoginRequiredMixin,
+                          SuccessMessageMixin,
+                          generic.CreateView):
     template_name = 'students/student_form.html'
     form_class = StudentForm
     model = Student
@@ -51,7 +54,9 @@ class StudentCreationView(SuccessMessageMixin, generic.CreateView):
                                         'user_form': user_form})
 
 
-class StudentChangeView(SuccessMessageMixin, generic.UpdateView):
+class StudentChangeView(LoginRequiredMixin,
+                        SuccessMessageMixin,
+                        generic.UpdateView):
     template_name = 'students/student_form.html'
     form_class = StudentChangeForm
     model = Student

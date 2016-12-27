@@ -118,3 +118,6 @@ STATICFILES_DIRS = (
 # Crispy Forms
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login'
