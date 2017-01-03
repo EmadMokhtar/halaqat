@@ -4,12 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
+
 from .forms import (ClassForm, ClassTypeForm, TeacherForm, UserChangeForm,
                     UserCreationForm)
 from .models import ClassType, HalaqatClass, Teacher
 
 
-class TeacherList(ListView):
+class TeacherList(LoginRequiredMixin,
+                  StaffuserRequiredMixin,
+                  ListView):
     """
     Show list of teachers in center
     """
@@ -19,7 +23,10 @@ class TeacherList(ListView):
     allow_empty = True
 
 
-class TeacherCreation(SuccessMessageMixin, CreateView):
+class TeacherCreation(LoginRequiredMixin,
+                      StaffuserRequiredMixin,
+                      SuccessMessageMixin,
+                      CreateView):
     """
     Creates new teacher
     """
@@ -46,7 +53,10 @@ class TeacherCreation(SuccessMessageMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class TeacherUpdate(SuccessMessageMixin, UpdateView):
+class TeacherUpdate(LoginRequiredMixin,
+                    StaffuserRequiredMixin,
+                    SuccessMessageMixin,
+                    UpdateView):
     """
     Update teacher profile
     """
@@ -64,13 +74,16 @@ class TeacherUpdate(SuccessMessageMixin, UpdateView):
         return context
 
     def form_valid(self, form):
-        user_form = UserChangeForm(self.request.POST, instance=self.object.user)
+        user_form = UserChangeForm(
+            self.request.POST, instance=self.object.user)
         if user_form.is_valid():
             user_form.save()
         return super(TeacherUpdate, self).form_valid(form)
 
 
-class ClassTypeList(ListView):
+class ClassTypeList(LoginRequiredMixin,
+                    StaffuserRequiredMixin,
+                    ListView):
     """
     Halaqat class type list view
     """
@@ -80,7 +93,10 @@ class ClassTypeList(ListView):
     allow_empty = True
 
 
-class ClassTypeCreation(SuccessMessageMixin, CreateView):
+class ClassTypeCreation(LoginRequiredMixin,
+                        StaffuserRequiredMixin,
+                        SuccessMessageMixin,
+                        CreateView):
     """
     Create halaqat class type view
     """
@@ -90,7 +106,10 @@ class ClassTypeCreation(SuccessMessageMixin, CreateView):
     success_message = _("Class Type created successfully")
 
 
-class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
+class ClassTypeUpdate(LoginRequiredMixin,
+                      StaffuserRequiredMixin,
+                      SuccessMessageMixin,
+                      UpdateView):
     """
     Update halaqat class type view
     """
@@ -100,7 +119,9 @@ class ClassTypeUpdate(SuccessMessageMixin, UpdateView):
     success_message = _("Class Type updated successfully")
 
 
-class ClassList(ListView):
+class ClassList(LoginRequiredMixin,
+                StaffuserRequiredMixin,
+                ListView):
     """
     List of class in halaqat
     """
@@ -110,7 +131,10 @@ class ClassList(ListView):
     allow_empty = True
 
 
-class ClassCreation(SuccessMessageMixin, CreateView):
+class ClassCreation(LoginRequiredMixin,
+                    StaffuserRequiredMixin,
+                    SuccessMessageMixin,
+                    CreateView):
     """
     Create halaqat class view
     """
@@ -120,7 +144,10 @@ class ClassCreation(SuccessMessageMixin, CreateView):
     success_message = _("Class created successfully")
 
 
-class ClassUpdate(SuccessMessageMixin, UpdateView):
+class ClassUpdate(LoginRequiredMixin,
+                  StaffuserRequiredMixin,
+                  SuccessMessageMixin,
+                  UpdateView):
     """
     Update halaqat class view
     """
