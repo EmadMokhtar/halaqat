@@ -1,1 +1,1 @@
-web: gunicorn halaqat.wsgi --log-file -
+web: gunicorn halaqat.wsgi-heroku --log-file -
