@@ -2,7 +2,7 @@ from .base_settings import *
 import dj_database_url
 import os
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['shaha-halaqat.herokuapp.com', '0.0.0.0']
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
