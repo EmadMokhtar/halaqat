@@ -88,7 +88,7 @@ msgstr ""
 
 #: back_office/models.py:97
 msgid "Teacher"
-msgstr Teacher
+msgstr "Teacher"
 
 #: back_office/models.py:98
 msgid "1st Semester Start Date"
