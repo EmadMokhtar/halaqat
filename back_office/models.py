@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-
 from master_data.models import GENDER_CHOICES, Nationality
 
 DAYS_CHOICES = (

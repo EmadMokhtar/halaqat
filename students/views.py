@@ -1,10 +1,9 @@
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import ugettext as _
 from django.views import generic
 
 from back_office.forms import UserChangeForm, UserCreationForm
-
-from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 
 from .forms import StudentChangeForm, StudentForm
 from .models import Student

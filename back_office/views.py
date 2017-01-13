@@ -1,10 +1,9 @@
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
-
-from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 
 from .forms import (ClassForm, ClassTypeForm, TeacherForm, UserChangeForm,
                     UserCreationForm)

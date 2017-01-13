@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout
 from django import forms
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 
 from .models import DAYS_CHOICES, ClassType, HalaqatClass, Teacher
 

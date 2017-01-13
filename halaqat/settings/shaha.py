@@ -1,6 +1,8 @@
-from .base_settings import *
-import dj_database_url
 import os
+
+import dj_database_url
+
+from .base_settings import *
 
 ALLOWED_HOSTS = ['shaha-halaqat.herokuapp.com', '0.0.0.0']
 
