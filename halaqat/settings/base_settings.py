@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .utils import get_env_variable
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'halaqat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '../db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -103,7 +103,7 @@ LANGUAGES = (
         )
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, '../locale'),
+    os.path.join(BASE_DIR, "locale"),
 )
 
 # Static files (CSS, JavaScript, Images)
@@ -112,7 +112,7 @@ LOCALE_PATHS = (
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "../static"),
+    os.path.join(BASE_DIR, "static"),
 )
 
 # Crispy Forms
