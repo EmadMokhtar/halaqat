@@ -24,6 +24,7 @@ STATUS_CHOICES = (
 
 
 class StudnetManager(models.Manager):
+
     def search(self, search_terms):
         terms = [term.strip() for term in search_terms.split()]
         q_objects = []
@@ -53,13 +54,16 @@ class Student(models.Model):
     home_number = models.CharField(max_length=12, verbose_name=_('Home'))
     parent_number = models.CharField(max_length=12, verbose_name=_('Parents'))
     grade = models.CharField(max_length=5, verbose_name=_('Grade'), blank=True)
-    school = models.CharField(max_length=12, verbose_name=_('School'), blank=True)
+    school = models.CharField(
+        max_length=12, verbose_name=_('School'), blank=True)
     nationality = models.ForeignKey(Nationality, verbose_name=_('Nationality'),
                                     null=True, blank=True)
     address = models.CharField(max_length=150, verbose_name=_('Address'),
                                blank=True)
-    parent_email = models.EmailField(verbose_name=_('Parent Email'), blank=True)
-    halaqat_class = models.ForeignKey(to=HalaqatClass, null=True, blank=True)
+    parent_email = models.EmailField(
+        verbose_name=_('Parent Email'), blank=True)
+    halaqat_class = models.ForeignKey(to=HalaqatClass, null=True, blank=True,
+                                      verbose_name=_("Halaqat"))
     enrollment_date = models.DateField(verbose_name=_('Enrollment Date'),
                                        null=True)
     old_enrollment_date = models.DateField(null=True,

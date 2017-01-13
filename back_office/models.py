@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from master_data.models import GENDER_CHOICES, Nationality
 
@@ -85,7 +85,7 @@ class ClassType(models.Model):
         return reverse('class_type-detail', args=(self.pk,))
 
     def __str__(self):
-        return u'%s' % self.name
+        return self.name
 
 
 class HalaqatClass(models.Model):

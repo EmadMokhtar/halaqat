@@ -1,21 +1,23 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from students.models import Student
 
 
 class StudentForm(forms.ModelForm):
     dob = forms.DateField(widget=forms.DateInput(
-                          attrs={'class': 'datepicker'})
-                          )
-    address = forms.CharField(widget=forms.Textarea())
+                          attrs={'class': 'datepicker'}),
+                          label=_('DOB'))
+    address = forms.CharField(widget=forms.Textarea(),
+                              label=_('Address'))
     helper = FormHelper()
     helper.form_tag = False
     helper.layout = Layout(
         Div(
             Div(
-                HTML('<h3 class="panel-title">Basic Info</h3>'),
+                HTML(_('<h3 class="panel-title">Basic Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
@@ -38,7 +40,7 @@ class StudentForm(forms.ModelForm):
             css_class='panel panel-default', ),
         Div(
             Div(
-                HTML('<h3 class="panel-title">Contact Info</h3>'),
+                HTML(_('<h3 class="panel-title">Contact Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
@@ -57,7 +59,7 @@ class StudentForm(forms.ModelForm):
             css_class='panel panel-default', ),
         Div(
             Div(
-                HTML('<h3 class="panel-title">Halaqat Info</h3>'),
+                HTML(_('<h3 class="panel-title">Halaqat Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
@@ -83,15 +85,16 @@ class StudentForm(forms.ModelForm):
 
 class StudentChangeForm(forms.ModelForm):
     dob = forms.DateField(widget=forms.DateInput(
-                          attrs={'class': 'datepicker'})
-                          )
-    address = forms.CharField(widget=forms.Textarea())
+                          attrs={'class': 'datepicker'}),
+                          label=_('DOB'))
+    address = forms.CharField(widget=forms.Textarea(),
+                              label=_('Address'))
     helper = FormHelper()
     helper.form_tag = False
     helper.layout = Layout(
         Div(
             Div(
-                HTML('<h3 class="panel-title">Basic Info</h3>'),
+                HTML(_('<h3 class="panel-title">Basic Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
@@ -110,7 +113,7 @@ class StudentChangeForm(forms.ModelForm):
             css_class='panel panel-default', ),
         Div(
             Div(
-                HTML('<h3 class="panel-title">Contact Info</h3>'),
+                HTML(_('<h3 class="panel-title">Contact Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
@@ -126,7 +129,7 @@ class StudentChangeForm(forms.ModelForm):
             css_class='panel panel-default', ),
         Div(
             Div(
-                HTML('<h3 class="panel-title">Halaqat Info</h3>'),
+                HTML(_('<h3 class="panel-title">Halaqat Info</h3>')),
                 css_class='panel-heading',
             ),
             Div(
