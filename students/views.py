@@ -1,5 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.views import generic
 
 from back_office.forms import UserChangeForm, UserCreationForm

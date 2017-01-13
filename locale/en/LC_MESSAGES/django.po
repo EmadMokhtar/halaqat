@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-18 10:07+0300\n"
+"POT-Creation-Date: 2017-01-14 02:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +17,119 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: back_office/models.py:11
+#: back_office/forms.py:19 back_office/forms.py:70
+msgid "<h3 class=\"panel-title\">User Info</h3>"
+msgstr ""
+
+#: back_office/forms.py:43 templates/login.html:20
+msgid "Password"
+msgstr ""
+
+#: back_office/forms.py:45
+#, fuzzy
+#| msgid "Class Information"
+msgid "Password confirmation"
+msgstr "Class Information"
+
+#: back_office/forms.py:63 templates/back_office/teacher_list.html:13
+#: templates/login.html:14
+msgid "Username"
+msgstr "Username"
+
+#: back_office/forms.py:105
+msgid "<h3 class=\"panel-title\">Teacher Info</h3>"
+msgstr ""
+
+#: back_office/forms.py:145 back_office/models.py:106
+msgid "Days"
+msgstr "Days"
+
+#: back_office/forms.py:148
+#, fuzzy
+#| msgid "1st Semester Start Date"
+msgid "First Semester Start"
+msgstr "1st Semester Start Date"
+
+#: back_office/forms.py:151
+#, fuzzy
+#| msgid "1st Semester"
+msgid "First Semester End"
+msgstr "1st Semester"
+
+#: back_office/forms.py:154
+#, fuzzy
+#| msgid "2nd Semester Start Date"
+msgid "Second Semester Start"
+msgstr "2nd Semester Start Date"
+
+#: back_office/forms.py:157
+#, fuzzy
+#| msgid "2nd Semester End Date"
+msgid "Second Semester End"
+msgstr "2nd Semester End Date"
+
+#: back_office/forms.py:160 back_office/models.py:104
+msgid "Start Time"
+msgstr "Start Time"
+
+#: back_office/forms.py:163 back_office/models.py:105
+msgid "End Time"
+msgstr "End Time"
+
+#: back_office/models.py:13
 msgid "Saturday"
 msgstr "Saturday"
 
-#: back_office/models.py:12
+#: back_office/models.py:14
 msgid "Sunday"
 msgstr "Sunday"
 
-#: back_office/models.py:13
+#: back_office/models.py:15
 msgid "Monday"
 msgstr "Monday"
 
-#: back_office/models.py:14
+#: back_office/models.py:16
 msgid "Tuesday"
 msgstr "Tuesday"
 
-#: back_office/models.py:15
+#: back_office/models.py:17
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: back_office/models.py:16
+#: back_office/models.py:18
 msgid "Thursday"
 msgstr "Thursday"
 
-#: back_office/models.py:17
+#: back_office/models.py:19
 msgid "Friday"
 msgstr "Friday"
 
-#: back_office/models.py:25 back_office/models.py:96 students/models.py:50
+#: back_office/models.py:27 back_office/models.py:98 students/models.py:50
 #: templates/back_office/class_list.html:14
 #: templates/back_office/teacher_list.html:14
 #: templates/students/student_list.html:32
 msgid "Gender"
 msgstr "Gender"
 
-#: back_office/models.py:27 students/models.py:52
+#: back_office/models.py:29 students/models.py:52
 #: templates/back_office/teacher_list.html:15
 #: templates/students/student_list.html:31
 msgid "Civil ID"
 msgstr "Civil ID"
 
-#: back_office/models.py:30
+#: back_office/models.py:32
 msgid "Phone Number"
 msgstr "Phone Number"
 
-#: back_office/models.py:31 templates/back_office/teacher_list.html:17
+#: back_office/models.py:33 templates/back_office/teacher_list.html:17
 msgid "Title"
 msgstr "Title"
 
-#: back_office/models.py:34 students/models.py:58
+#: back_office/models.py:36 students/models.py:59
 msgid "Nationality"
 msgstr "Nationality"
 
-#: back_office/models.py:80 back_office/models.py:94 master_data/models.py:14
+#: back_office/models.py:82 back_office/models.py:96 master_data/models.py:14
 #: templates/back_office/class_list.html:12
 #: templates/back_office/class_type_list.html:12
 #: templates/back_office/teacher_list.html:11
@@ -78,108 +137,116 @@ msgstr "Nationality"
 msgid "Name"
 msgstr "Name"
 
-#: back_office/models.py:81 templates/back_office/class_type_list.html:13
+#: back_office/models.py:83 templates/back_office/class_type_list.html:13
 msgid "Monthly Fees"
 msgstr ""
 
-#: back_office/models.py:95 templates/back_office/class_list.html:13
+#: back_office/models.py:97 templates/back_office/class_list.html:13
 msgid "Type"
 msgstr ""
 
-#: back_office/models.py:97
+#: back_office/models.py:99
 msgid "Teacher"
 msgstr "Teacher"
 
-#: back_office/models.py:98
+#: back_office/models.py:100
 msgid "1st Semester Start Date"
 msgstr "1st Semester Start Date"
 
-#: back_office/models.py:99
+#: back_office/models.py:101
 msgid "1st Semester End Date"
 msgstr ""
 
-#: back_office/models.py:100
+#: back_office/models.py:102
 msgid "2nd Semester Start Date"
 msgstr "2nd Semester Start Date"
 
-#: back_office/models.py:101
+#: back_office/models.py:103
 msgid "2nd Semester End Date"
 msgstr "2nd Semester End Date"
 
-#: back_office/models.py:102
-msgid "Start Time"
-msgstr "Start Time"
-
-#: back_office/models.py:103
-msgid "End Time"
-msgstr "End Time"
-
-#: back_office/models.py:104
-msgid "Days"
-msgstr "Days"
-
-#: back_office/models.py:117 back_office/models.py:119
-#: back_office/models.py:121
+#: back_office/models.py:119 back_office/models.py:121
+#: back_office/models.py:123
 msgid "invalid first semester start date is invalid"
 msgstr "invalid first semester start date is invalid"
 
-#: back_office/models.py:125
+#: back_office/models.py:127
 msgid "Class gender and teacher gender are not match"
 msgstr "Class gender and teacher gender are not match"
 
-#: back_office/views.py:29
+#: back_office/views.py:37
 msgid "Teacher profile created successfully"
 msgstr "Teacher profile created successfully"
 
-#: back_office/views.py:56
+#: back_office/views.py:65
 msgid "Teacher profile updated successfully"
 msgstr "Teacher profile updated successfully"
 
-#: back_office/views.py:89
+#: back_office/views.py:104
 msgid "Class Type created successfully"
 msgstr "Class Type created successfully"
 
-#: back_office/views.py:99
+#: back_office/views.py:117
 msgid "Class Type updated successfully"
 msgstr "Class Type updated successfully"
 
-#: back_office/views.py:119
+#: back_office/views.py:142
 msgid "Class created successfully"
 msgstr "Class created successfully"
 
-#: back_office/views.py:129
+#: back_office/views.py:155
 msgid "Class updated successfully"
 msgstr "Class updated successfully"
 
-#: halaqat/settings/base_settings.py:100
+#: halaqat/settings/base_settings.py:101
 msgid "Arabic"
 msgstr "Arabic"
 
-#: halaqat/settings/base_settings.py:101
+#: halaqat/settings/base_settings.py:102
 msgid "English"
 msgstr "English"
 
-#: master_data/models.py:6
+#: master_data/models.py:5
 msgid "Male"
 msgstr "Male"
 
-#: master_data/models.py:7
+#: master_data/models.py:6
 msgid "Female"
 msgstr "Female"
 
-#: master_data/models.py:15 students/models.py:21
+#: master_data/models.py:15 students/models.py:20
 msgid "Active"
 msgstr "Active"
 
-#: students/models.py:20
+#: students/forms.py:12 students/forms.py:89
+msgid "DOB"
+msgstr ""
+
+#: students/forms.py:14 students/forms.py:91 students/models.py:61
+msgid "Address"
+msgstr "Address"
+
+#: students/forms.py:20 students/forms.py:97
+msgid "<h3 class=\"panel-title\">Basic Info</h3>"
+msgstr ""
+
+#: students/forms.py:43 students/forms.py:116
+msgid "<h3 class=\"panel-title\">Contact Info</h3>"
+msgstr ""
+
+#: students/forms.py:62 students/forms.py:132
+msgid "<h3 class=\"panel-title\">Halaqat Info</h3>"
+msgstr ""
+
+#: students/models.py:19
 msgid "Pending"
 msgstr "Pending"
 
-#: students/models.py:22
+#: students/models.py:21
 msgid "Suspended"
 msgstr "Suspended"
 
-#: students/models.py:23
+#: students/models.py:22
 msgid "On Leave"
 msgstr "On Leave"
 
@@ -199,41 +266,45 @@ msgstr "Parents"
 msgid "Grade"
 msgstr "Grade"
 
-#: students/models.py:57
+#: students/models.py:58
 msgid "School"
 msgstr "School"
 
-#: students/models.py:60
-msgid "Address"
-msgstr "Address"
-
-#: students/models.py:62
+#: students/models.py:64
 msgid "Parent Email"
 msgstr "Parent Email"
 
-#: students/models.py:64
+#: students/models.py:66
+msgid "Halaqat"
+msgstr ""
+
+#: students/models.py:67
 msgid "Enrollment Date"
 msgstr "Enrollment Date"
 
-#: students/models.py:67
+#: students/models.py:70
 msgid "Previous Center Enrollment Date"
 msgstr "Previous Center Enrollment Date"
 
-#: students/models.py:69
+#: students/models.py:72
 msgid "Chapters Memorized"
 msgstr "Chapters Memorized"
 
-#: students/models.py:71
+#: students/models.py:74
 msgid "Chapters memorized with center"
 msgstr "Chapters memorized with center"
 
-#: students/models.py:74 templates/students/student_list.html:33
+#: students/models.py:77 templates/students/student_list.html:33
 msgid "Status"
 msgstr "Status"
 
-#: students/views.py:31 students/views.py:59
+#: students/views.py:38 students/views.py:69
 msgid "Student profile saved successfully"
 msgstr "Student profile saved successfully"
+
+#: templates/_user_nav.html:9
+msgid "Logout"
+msgstr ""
 
 #: templates/back_office/class_form.html:6
 msgid "Class Form"
@@ -250,7 +321,7 @@ msgstr "Class Information"
 msgid "Save"
 msgstr "Save"
 
-#: templates/back_office/class_list.html:4 templates/back_office/menu.html:49
+#: templates/back_office/class_list.html:4 templates/back_office/menu.html:50
 msgid "Classes"
 msgstr "Classes"
 
@@ -297,21 +368,21 @@ msgstr "No class type information to display"
 msgid "Halaqt - Back Office"
 msgstr "Halaqt - Back Office"
 
-#: templates/back_office/menu.html:24 templates/back_office/teacher_list.html:4
+#: templates/back_office/menu.html:23 templates/back_office/teacher_list.html:4
 msgid "Teachers"
 msgstr "Teachers"
 
-#: templates/back_office/menu.html:28 templates/back_office/menu.html:41
-#: templates/back_office/menu.html:53 templates/back_office/menu.html:66
+#: templates/back_office/menu.html:27 templates/back_office/menu.html:41
+#: templates/back_office/menu.html:54 templates/back_office/menu.html:68
 msgid "All"
 msgstr "All"
 
-#: templates/back_office/menu.html:31 templates/back_office/menu.html:44
-#: templates/back_office/menu.html:56 templates/back_office/menu.html:69
+#: templates/back_office/menu.html:31 templates/back_office/menu.html:45
+#: templates/back_office/menu.html:58 templates/back_office/menu.html:72
 msgid "New"
 msgstr "New"
 
-#: templates/back_office/menu.html:62 templates/students/student_list.html:5
+#: templates/back_office/menu.html:64 templates/students/student_list.html:5
 msgid "Students"
 msgstr "Students"
 
@@ -323,10 +394,6 @@ msgstr "Teacher Form"
 msgid "Email"
 msgstr "Email"
 
-#: templates/back_office/teacher_list.html:13
-msgid "Username"
-msgstr "Username"
-
 #: templates/back_office/teacher_list.html:16
 msgid "Phone#"
 msgstr "Phone#"
@@ -334,6 +401,10 @@ msgstr "Phone#"
 #: templates/back_office/teacher_list.html:39
 msgid "No teacher information to display"
 msgstr "No teacher information to display"
+
+#: templates/login.html:10 templates/login.html:27
+msgid "Login"
+msgstr ""
 
 #: templates/students/student_form.html:6
 msgid "Student Form"
@@ -343,6 +414,7 @@ msgstr "Student Form"
 msgid "New Studnet"
 msgstr "New Studnet"
 
+#: templates/students/student_list.html:17
 #: templates/students/student_list.html:19
 msgid "Search"
 msgstr "Search"
@@ -366,3 +438,11 @@ msgstr "Class"
 #: templates/students/student_list.html:64
 msgid "No Students to display"
 msgstr "No Students to display"
+
+#~ msgid "User Info"
+#~ msgstr "User Info"
+
+#, fuzzy
+#~| msgid "User Info"
+#~ msgid "Basic Info"
+#~ msgstr "User Info"

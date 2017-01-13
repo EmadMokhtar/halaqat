@@ -38,9 +38,7 @@ class TeacherCreation(LoginRequiredMixin,
 
     def get_context_data(self, **kwargs):
         context = super(TeacherCreation, self).get_context_data(**kwargs)
-
         context['user_form'] = self.second_form_class
-
         return context
 
     def form_valid(self, form):
