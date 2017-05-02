@@ -74,6 +74,10 @@ class Teacher(models.Model):
     def full_name(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.username
 
+    class Meta:
+        verbose_name = _('Teacher')
+        verbose_name_plural = _('Teachers')
+
 
 class ClassType(models.Model):
     """
@@ -88,6 +92,10 @@ class ClassType(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Class type')
+        verbose_name_plural = _('Class types')
 
 
 class HalaqatClass(models.Model):
@@ -150,3 +158,7 @@ class HalaqatClass(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Class')
+        verbose_name_plural = _('Classes')

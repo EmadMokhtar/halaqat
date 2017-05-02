@@ -13,3 +13,7 @@ class Nationality(models.Model):
     """
     name = models.CharField(max_length=10, verbose_name=_('Name'), unique=True)
     is_active = models.BooleanField(default=True, verbose_name=_('Active'))
+
+    class Meta:
+        verbose_name = _('Nationality')
+        verbose_name_plural = _('Nationalities')
