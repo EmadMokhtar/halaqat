@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-02 13:40+0300\n"
+"POT-Creation-Date: 2017-05-02 20:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "أسم المستخدم"
 msgid "<h3 class=\"panel-title\">Teacher Info</h3>"
 msgstr "<h3 class=\"panel-title\">معلومات المحفظ</h3>"
 
-#: back_office/forms.py:145 back_office/models.py:114
+#: back_office/forms.py:145 back_office/models.py:122
 msgid "Days"
 msgstr "الأيام"
 
@@ -59,11 +59,11 @@ msgstr "تاريخ بداية الفصل الثاني"
 msgid "Second Semester End"
 msgstr "تاريخ أنتهاء الفصل الثاني"
 
-#: back_office/forms.py:160 back_office/models.py:112
+#: back_office/forms.py:160 back_office/models.py:120
 msgid "Start Time"
 msgstr "من الساعة"
 
-#: back_office/forms.py:163 back_office/models.py:113
+#: back_office/forms.py:163 back_office/models.py:121
 msgid "End Time"
 msgstr "إلى الساعة"
 
@@ -95,7 +95,7 @@ msgstr "الخميس"
 msgid "Friday"
 msgstr "الجمعة"
 
-#: back_office/models.py:26 back_office/models.py:101 students/models.py:50
+#: back_office/models.py:26 back_office/models.py:109 students/models.py:50
 #: templates/back_office/class_list.html:14
 #: templates/back_office/teacher_list.html:14
 #: templates/students/student_list.html:32
@@ -116,11 +116,20 @@ msgstr "رقم التليفون"
 msgid "Title"
 msgstr "الوظيفة"
 
-#: back_office/models.py:35 students/models.py:59
+#: back_office/models.py:35 master_data/models.py:18 students/models.py:59
 msgid "Nationality"
 msgstr "الجنسية"
 
-#: back_office/models.py:82 back_office/models.py:97 master_data/models.py:14
+#: back_office/models.py:78 back_office/models.py:111
+msgid "Teacher"
+msgstr "المحفظ"
+
+#: back_office/models.py:79 templates/back_office/menu.html:23
+#: templates/back_office/teacher_list.html:4
+msgid "Teachers"
+msgstr "المحفظين"
+
+#: back_office/models.py:86 back_office/models.py:105 master_data/models.py:14
 #: templates/back_office/class_list.html:12
 #: templates/back_office/class_type_list.html:12
 #: templates/back_office/teacher_list.html:11
@@ -128,49 +137,66 @@ msgstr "الجنسية"
 msgid "Name"
 msgstr "الأسم"
 
-#: back_office/models.py:84 templates/back_office/class_type_list.html:13
+#: back_office/models.py:88 templates/back_office/class_type_list.html:13
 msgid "Monthly Fees"
 msgstr "الإشتراك الشهري"
 
-#: back_office/models.py:99 templates/back_office/class_list.html:13
+#: back_office/models.py:97
+#, fuzzy
+#| msgid "Class Types"
+msgid "Class type"
+msgstr "انواع الحلقات"
+
+#: back_office/models.py:98
+#, fuzzy
+#| msgid "Class Types"
+msgid "Class types"
+msgstr "انواع الحلقات"
+
+#: back_office/models.py:107 templates/back_office/class_list.html:13
 msgid "Type"
 msgstr "نوع الحلقة"
 
-#: back_office/models.py:103
-msgid "Teacher"
-msgstr "المحفظ"
-
-#: back_office/models.py:105
+#: back_office/models.py:113
 msgid "1st Semester Start Date"
 msgstr "تاريخ بداية الفصل الأول"
 
-#: back_office/models.py:107
+#: back_office/models.py:115
 msgid "1st Semester End Date"
 msgstr "تاريخ أنتهاء الفصل الأول"
 
-#: back_office/models.py:109
+#: back_office/models.py:117
 msgid "2nd Semester Start Date"
 msgstr "تاريخ بداية الفصل الثاني"
 
-#: back_office/models.py:111
+#: back_office/models.py:119
 msgid "2nd Semester End Date"
 msgstr "تاريخ أنتهاء الفصل الثاني"
 
-#: back_office/models.py:128
+#: back_office/models.py:136
 msgid "First semester start date is invalid"
 msgstr "تاريخ بداية الفصل الدراسي الأول غير صحيح"
 
-#: back_office/models.py:131
+#: back_office/models.py:139
 msgid "First semester end date is invalid"
 msgstr "تاريخ بداية الفصل الدراسي الأول غير صحيح"
 
-#: back_office/models.py:134
+#: back_office/models.py:142
 msgid "Second semester start date is invalid"
 msgstr "تاريخ بداية الفصل الدراسي الأول غير صحيح"
 
-#: back_office/models.py:140
+#: back_office/models.py:148
 msgid "Class gender and teacher gender are not match"
 msgstr "نوع الحلقة ونوع المحفظ مختلفين"
+
+#: back_office/models.py:163 templates/students/student_list.html:36
+msgid "Class"
+msgstr "الحلقات"
+
+#: back_office/models.py:164 templates/back_office/class_list.html:4
+#: templates/back_office/menu.html:50
+msgid "Classes"
+msgstr "الحلقات"
 
 #: back_office/views.py:36
 msgid "Teacher profile created successfully"
@@ -215,6 +241,12 @@ msgstr "أنثى"
 #: master_data/models.py:15 students/models.py:20
 msgid "Active"
 msgstr "ملتحق"
+
+#: master_data/models.py:19
+#, fuzzy
+#| msgid "Nationality"
+msgid "Nationalities"
+msgstr "الجنسية"
 
 #: students/forms.py:12 students/forms.py:89
 msgid "DOB"
@@ -296,6 +328,17 @@ msgstr "عدد الأجزاء المحفوظة مع المركز"
 msgid "Status"
 msgstr "الحالة"
 
+#: students/models.py:97
+#, fuzzy
+#| msgid "Students"
+msgid "Student"
+msgstr "الطلاب"
+
+#: students/models.py:98 templates/back_office/menu.html:64
+#: templates/students/student_list.html:5
+msgid "Students"
+msgstr "الطلاب"
+
 #: students/views.py:37 students/views.py:68
 msgid "Student profile saved successfully"
 msgstr "تم حفظ ملف الطالب بنجاح"
@@ -318,10 +361,6 @@ msgstr "معلومات الحلقة"
 #: templates/students/student_form.html:14
 msgid "Save"
 msgstr "أحفظ"
-
-#: templates/back_office/class_list.html:4 templates/back_office/menu.html:50
-msgid "Classes"
-msgstr "الحلقات"
 
 #: templates/back_office/class_list.html:15
 msgid "1st Semester"
@@ -366,10 +405,6 @@ msgstr "لا يوجد أنواع للحلقات"
 msgid "Halaqat - Back Office"
 msgstr "برنامج الحلقات - الإدارة"
 
-#: templates/back_office/menu.html:23 templates/back_office/teacher_list.html:4
-msgid "Teachers"
-msgstr "المحفظين"
-
 #: templates/back_office/menu.html:27 templates/back_office/menu.html:41
 #: templates/back_office/menu.html:54 templates/back_office/menu.html:68
 msgid "All"
@@ -379,10 +414,6 @@ msgstr "الكل"
 #: templates/back_office/menu.html:58 templates/back_office/menu.html:72
 msgid "New"
 msgstr "جديد"
-
-#: templates/back_office/menu.html:64 templates/students/student_list.html:5
-msgid "Students"
-msgstr "الطلاب"
 
 #: templates/back_office/teacher_form.html:5
 msgid "Teacher Form"
@@ -428,10 +459,6 @@ msgstr "المحمول"
 #: templates/students/student_list.html:35
 msgid "Parent#"
 msgstr "ولي الأمر"
-
-#: templates/students/student_list.html:36
-msgid "Class"
-msgstr "الحلقات"
 
 #: templates/students/student_list.html:64
 msgid "No Students to display"
