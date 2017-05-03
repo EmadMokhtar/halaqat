@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-02 20:18+0300\n"
+"POT-Creation-Date: 2017-05-03 16:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "<h3 class=\"panel-title\">User Info</h3>"
 msgstr "<h3 class=\"panel-title\">User Info</h3>"
 
-#: back_office/forms.py:43 templates/login.html:20
+#: back_office/forms.py:43 templates/login.html:20 templates/menu.html:40
 msgid "Password"
 msgstr "Password"
 
@@ -30,7 +30,7 @@ msgid "Password confirmation"
 msgstr "Password confirmation"
 
 #: back_office/forms.py:63 templates/back_office/teacher_list.html:13
-#: templates/login.html:14
+#: templates/login.html:14 templates/menu.html:37
 msgid "Username"
 msgstr "Username"
 
@@ -432,9 +432,35 @@ msgstr "Phone#"
 msgid "No teacher information to display"
 msgstr "No teacher information to display"
 
-#: templates/login.html:10 templates/login.html:27
+#: templates/home.html:8 templates/home.html:19 templates/home.html:27
+msgid "Halaqat Masjid Shaha"
+msgstr ""
+
+#: templates/home.html:20
+msgid ""
+"Masjid carrying name of Shaha Abbul-Razak Al-Aboud widow of Ali Yousf Al-"
+"Miziny."
+msgstr ""
+
+#: templates/home.html:21
+msgid "This is application to manage halaqat in masjid."
+msgstr ""
+
+#: templates/home.html:28
+msgid "back office"
+msgstr ""
+
+#: templates/login.html:10 templates/login.html:27 templates/menu.html:42
 msgid "Login"
 msgstr "Login"
+
+#: templates/menu.html:15
+msgid "Masjid Shaha"
+msgstr ""
+
+#: templates/menu.html:43
+msgid "Register"
+msgstr ""
 
 #: templates/students/student_form.html:6
 msgid "Student Form"

@@ -5,8 +5,10 @@ from django.contrib.auth import views as auth_views
 
 from back_office import urls as back_office_url
 from students import urls as students_url
+from .views import IndexView
 
 urlpatterns = i18n_patterns(
+    url(r'^$', view=IndexView.as_view(), name='home'),
     url(r'^login/$', auth_views.login,
         {'template_name': 'login.html'},
         name='login'),

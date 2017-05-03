@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as RTL %}
+{% block title %}
+    {% trans "Halaqat Masjid Shaha" %}
+{% endblock %}
+{% block menu %}
+
+{% include "menu.html" %}
+
+{% endblock %} 
+
+{% block container %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>{% trans "Halaqat Masjid Shaha" %}</h1>
+        <p>{% trans "Masjid carrying name of Shaha Abbul-Razak Al-Aboud widow of Ali Yousf Al-Miziny." %}</p>
+        <p>{% trans "This is application to manage halaqat in masjid." %}</p>
+    </div>
+</div>
+
+<div class="container">
+    <footer>
+        <p>{% trans "Halaqat Masjid Shaha" %} &copy; {% now "Y" %} </p>
+        <p><a href="{% url 'student-list' %}">{% trans "back office" %}</a></p>
+    </footer>
+</div>
+{% endblock %}
