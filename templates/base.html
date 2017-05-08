@@ -31,6 +31,12 @@
     {% block container %}
     {%  endblock %}
 </div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left">{% trans "Halaqat Masjid Shaha" %} &copy; {% now "Y" %}</p>
+      <a class="navbar-btn pull-right btn" href="{% url 'student-list' %}">{% trans "back office" %}</a>
+    </div>
+  </div>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 {% block scripts %}
