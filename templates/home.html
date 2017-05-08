@@ -11,7 +11,7 @@
 
 {% include "menu.html" %}
 
-{% endblock %} 
+{% endblock %}
 
 {% block container %}
 <div class="jumbotron">
@@ -20,12 +20,5 @@
         <p>{% trans "Masjid carrying name of Shaha Abbul-Razak Al-Aboud widow of Ali Yousf Al-Miziny." %}</p>
         <p>{% trans "This is application to manage halaqat in masjid." %}</p>
     </div>
-</div>
-
-<div class="container">
-    <footer>
-        <p>{% trans "Halaqat Masjid Shaha" %} &copy; {% now "Y" %} </p>
-        <p><a href="{% url 'student-list' %}">{% trans "back office" %}</a></p>
-    </footer>
 </div>
 {% endblock %}
