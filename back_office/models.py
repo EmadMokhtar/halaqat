@@ -67,11 +67,16 @@ class Teacher(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.full_clean()
-        super(Teacher, self).save(force_insert, force_update, using, update_fields)
+        super(Teacher, self).save(force_insert,
+                                  force_update, using, update_fields)
 
     @property
     def full_name(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.username
+
+    class Meta:
+        verbose_name = _('Teacher')
+        verbose_name_plural = _('Teachers')
 
 
 class ClassType(models.Model):
@@ -79,7 +84,8 @@ class ClassType(models.Model):
     Halaqat Class Type information
     """
     name = models.CharField(max_length=20, verbose_name=_('Name'), unique=True)
-    monthly_fees = models.DecimalField(max_digits=6, decimal_places=3, verbose_name=_('Monthly Fees'))
+    monthly_fees = models.DecimalField(
+        max_digits=6, decimal_places=3, verbose_name=_('Monthly Fees'))
 
     def get_absolute_url(self):
         return reverse('class_type-detail', args=(self.pk,))
@@ -87,19 +93,30 @@ class ClassType(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _('Class type')
+        verbose_name_plural = _('Class types')
+
 
 class HalaqatClass(models.Model):
     """
     Halaqat Class
     """
     name = models.CharField(max_length=20, verbose_name=_('Name'))
-    class_type = models.ForeignKey(to=ClassType, verbose_name=_('Type'), related_name='classes')
-    gender = models.CharField(max_length=2, verbose_name=_('Gender'), choices=GENDER_CHOICES)
-    teacher = models.ForeignKey(to=Teacher, verbose_name=_('Teacher'), related_name='classes')
-    first_semester_start = models.DateField(verbose_name=_('1st Semester Start Date'))
-    first_semester_end = models.DateField(verbose_name=_('1st Semester End Date'))
-    second_semester_start = models.DateField(verbose_name=_('2nd Semester Start Date'))
-    second_semester_end = models.DateField(verbose_name=_('2nd Semester End Date'))
+    class_type = models.ForeignKey(
+        to=ClassType, verbose_name=_('Type'), related_name='classes')
+    gender = models.CharField(max_length=2, verbose_name=_(
+        'Gender'), choices=GENDER_CHOICES)
+    teacher = models.ForeignKey(to=Teacher, verbose_name=_(
+        'Teacher'), related_name='classes')
+    first_semester_start = models.DateField(
+        verbose_name=_('1st Semester Start Date'))
+    first_semester_end = models.DateField(
+        verbose_name=_('1st Semester End Date'))
+    second_semester_start = models.DateField(
+        verbose_name=_('2nd Semester Start Date'))
+    second_semester_end = models.DateField(
+        verbose_name=_('2nd Semester End Date'))
     start_time = models.TimeField(verbose_name=_('Start Time'))
     end_time = models.TimeField(verbose_name=_('End Time'))
     days = models.TextField(verbose_name=_('Days'))
@@ -115,22 +132,33 @@ class HalaqatClass(models.Model):
 
     def clean_semester_dates(self):
         if self.first_semester_start > self.first_semester_end:
-            raise ValidationError({'first_semester_start': _('invalid first semester start date is invalid')})
+            raise ValidationError({'first_semester_start':
+                                   _('First semester start date is invalid')})
         elif self.first_semester_end > self.second_semester_start:
-            raise ValidationError({'first_semester_end': _('invalid first semester start date is invalid')})
+            raise ValidationError({'first_semester_end':
+                                   _('First semester end date is invalid')})
         elif self.second_semester_start > self.second_semester_end:
-            raise ValidationError({'second_semester_start': _('invalid first semester start date is invalid')})
+            raise ValidationError({'second_semester_start':
+                                   _('Second semester start date is invalid')})
 
     def clean(self, *args, **kwargs):
         if self.gender != self.teacher.gender:
-            raise ValidationError({'teacher': _('Class gender and teacher gender are not match')})
+            raise ValidationError(
+                {'teacher':
+                 _('Class gender and teacher gender are not match')
+                 })
         self.clean_semester_dates()
         super(HalaqatClass, self).clean(*args, **kwargs)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         self.full_clean()
-        super(HalaqatClass, self).save(force_insert, force_update, using, update_fields)
+        super(HalaqatClass, self).save(
+            force_insert, force_update, using, update_fields)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Class')
+        verbose_name_plural = _('Classes')

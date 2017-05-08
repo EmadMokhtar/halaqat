@@ -92,3 +92,7 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse('student-detail', args=(self.pk,))
+
+    class Meta:
+        verbose_name = _('Student')
+        verbose_name_plural = _('Students')

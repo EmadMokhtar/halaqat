@@ -6,18 +6,20 @@
 {% endblock %}
 {% block container %}
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <a class="btn btn-default" href="{% url 'student-new' %}">
             {% trans "New Studnet" %}
         </a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <form class="form-inline" method="get">
-            <div class="form-group">
+            <div class="input-group">
                 <input type="text" id='q' name='q' class="form-control" placeholder="{% trans "Search" %}">
-                <button type="submit" class="btn btn-default">
-                    {% trans "Search" %}
-                </button>
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
