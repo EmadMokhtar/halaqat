@@ -30,6 +30,11 @@
     {% if RTL %}
         <link href="{% static 'css/bootstrap-rtl.css' %}" rel="stylesheet">
     {% endif %}
+    <style media="screen">
+        body {
+            padding-bottom: 70px;
+        }
+    </style>
     {% block style %}
     {% endblock %}
 </head>
@@ -42,7 +47,7 @@
     {%  endblock %}
 </div>
 <br>
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
       <p class="navbar-text pull-left">{% trans "Halaqat" %} &copy; {% now "Y" %}</p>
       <a class="navbar-btn pull-right btn" href="{% url 'student-list' %}">{% trans "back office" %}</a>
